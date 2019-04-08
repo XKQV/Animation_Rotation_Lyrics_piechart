@@ -25,6 +25,7 @@ extension UITableViewCell{
             layer.removeAnimation(forKey: "translation")
                 
             let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+            
             animation.values = [50 , 0 , 50 , 0];
             animation.duration = 0.7
             animation.repeatCount = 1
@@ -53,7 +54,7 @@ extension UITableViewCell{
             
         case .scaleAlways :
             //layer.removeAnimation(forKey: "scale")
-            let animation = CAKeyframeAnimation(keyPath: "transform.scale.x")
+            let animation = CAKeyframeAnimation(keyPath: "transform.scale")
             animation.values = [1.0, 1.2 ];
             animation.duration = 0.7
             animation.repeatCount = 1
@@ -65,7 +66,8 @@ extension UITableViewCell{
         case .scaleNormal:
            
             let animation = CAKeyframeAnimation(keyPath: "transform.scale.x")
-            animation.autoreverses = true
+//            animation.autoreverses = true
+            animation.values = [1.2, 1.0 ];
             animation.duration = 0.7
             animation.repeatCount = 1
             animation.timingFunctions = [CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)];
