@@ -112,15 +112,10 @@
 		EA5E3A30225AF17B002E8CE7 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
-				EA5E3A66225B2F91002E8CE7 /* 309769.lrc */,
 				EA5E3A31225AF17B002E8CE7 /* AppDelegate.h */,
 				EA5E3A32225AF17B002E8CE7 /* AppDelegate.m */,
-				EA5E3A34225AF17B002E8CE7 /* ViewController.h */,
-				EA5E3A35225AF17B002E8CE7 /* ViewController.m */,
-				EA5E3A6C225B332F002E8CE7 /* lyricsViewController.swift */,
-				EA5E3A64225B2F58002E8CE7 /* SCTableView.swift */,
-				EA5E3A68225B3056002E8CE7 /* SCLrcCell.swift */,
-				EA5E3A6A225B3271002E8CE7 /* SCCellAnimation.swift */,
+				EAE28ACB225B4481001119FF /* SongAnimation */,
+				EAE28ACA225B445F001119FF /* LyricAnimation  */,
 				EA5E3A37225AF17B002E8CE7 /* Main.storyboard */,
 				EA5E3A3A225AF17C002E8CE7 /* Assets.xcassets */,
 				EA5E3A3C225AF17C002E8CE7 /* LaunchScreen.storyboard */,
@@ -147,6 +142,27 @@
 				EA5E3A57225AF17D002E8CE7 /* Info.plist */,
 			);
 			path = AnimationUITests;
+			sourceTree = "<group>";
+		};
+		EAE28ACA225B445F001119FF /* LyricAnimation  */ = {
+			isa = PBXGroup;
+			children = (
+				EA5E3A66225B2F91002E8CE7 /* 309769.lrc */,
+				EA5E3A6C225B332F002E8CE7 /* lyricsViewController.swift */,
+				EA5E3A64225B2F58002E8CE7 /* SCTableView.swift */,
+				EA5E3A68225B3056002E8CE7 /* SCLrcCell.swift */,
+				EA5E3A6A225B3271002E8CE7 /* SCCellAnimation.swift */,
+			);
+			path = "LyricAnimation ";
+			sourceTree = "<group>";
+		};
+		EAE28ACB225B4481001119FF /* SongAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				EA5E3A34225AF17B002E8CE7 /* ViewController.h */,
+				EA5E3A35225AF17B002E8CE7 /* ViewController.m */,
+			);
+			path = SongAnimation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

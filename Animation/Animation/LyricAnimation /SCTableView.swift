@@ -10,13 +10,10 @@ import UIKit
 
 class SCTableView: UITableView,UITableViewDelegate, UITableViewDataSource{
     
-    var mCurrentSongIndex = 0
-    var mUpdateTimer: Timer?
     
-    var mLRCDictinary : [String : String] = [String : String]()
-    var mTimeArray : [String] = [String]()
+    var mLRCDictinary = [String : String]()
+    var mTimeArray = [String]()
     var mIsLRCPrepared : Bool = false
-    var mLineNumber : Int = -1
     
     var currentCell : SCLrcCell?
     
@@ -24,19 +21,7 @@ class SCTableView: UITableView,UITableViewDelegate, UITableViewDataSource{
     
     var old_Index : Int = 0
         
-    var lrcProgress : CGFloat = 0.0{
-        
-        didSet{
-            
-            if currentCell != nil {
-                
-                autoUpdateLrc()
-                
-            }
-        }
-        
-    }
-    
+ 
     // 设置歌词index，显示哪一行
     var Lrc_Index : Int = 0 {
         
@@ -45,7 +30,6 @@ class SCTableView: UITableView,UITableViewDelegate, UITableViewDataSource{
             if Lrc_Index == oldValue {
                 return
             }
-            
             // 滚动到指定index的位置
             // 新的indexPath
             let indexPath = NSIndexPath(row: Lrc_Index, section: 0  )
@@ -55,12 +39,9 @@ class SCTableView: UITableView,UITableViewDelegate, UITableViewDataSource{
             // 旧的indexPath
             let oldIndexpath = NSIndexPath(row: oldValue, section: 0)
             let oldCell = self.cellForRow(at: oldIndexpath as IndexPath) as? SCLrcCell
-            old_Index = oldValue
-            lrcOldCell = oldCell
             currentCell?.addAnimation(animationType: .scaleAlways)
             oldCell?.addAnimation(animationType: .scaleNormal)
             oldCell?.mTitleLable.textColor = UIColor.black
-            //            oldCell?.lrcCell_textLabel?.progress = 0
         }
         
     }
@@ -119,41 +100,7 @@ class SCTableView: UITableView,UITableViewDelegate, UITableViewDataSource{
         self.reloadData()
     }
     
-    func updateLRC(currentTime:CGFloat) {
-        for i in 0..<self.mLRCDictinary.count {
-            var timeArr = self.mTimeArray[i].components(separatedBy:":")
-            let time = CGFloat(Int(timeArr[0])!) * 60 + CGFloat(Int(timeArr[1])!)
-            if i + 1 < self.mTimeArray.count {
-                var timeArr1 = self.mTimeArray[i + 1].components(separatedBy:":")
-                let time1 = CGFloat(Int(timeArr1[0])!) * 60 + CGFloat(Int(timeArr1[1])!)
-                
-                if currentTime > time && currentTime < time1 {
-                    self.mLineNumber = i
-                    self.reloadData()
-                    self.selectRow(at: NSIndexPath(row: i, section: 0) as IndexPath, animated: true, scrollPosition: UITableView.ScrollPosition.middle)
-                }
-            }
-        }
-    }
-    
-    /// 自动更新歌词进度方法
-    fileprivate func autoUpdateLrc()  {
-        //        let lrcModel = lrcModels[Lrc_Index]
-        //        lrcModel.progress = lrcProgress
-        //        lrcModels[Lrc_Index] = lrcModel
-        let indexPath = NSIndexPath(row: Lrc_Index, section: 0) as IndexPath
-        
-        let count = self.visibleCells
-        if count.count <= 0 || indexPath.row > self.mTimeArray.count - 1 {
-            return
-        }
-        
-        guard (self.cellForRow(at:indexPath ) != nil)  else {
-            return
-        }
-        let cell = self.cellForRow(at:indexPath )
-        
-    }
+
     
     
     //MARK: - Table Delegate
@@ -177,19 +124,10 @@ class SCTableView: UITableView,UITableViewDelegate, UITableViewDataSource{
         cell.mTitleLable.lineBreakMode = NSLineBreakMode.byWordWrapping
         cell.mTitleLable.sizeToFit()
         
-        if self.mLineNumber == indexPath.row {
-            cell.mTitleLable.font = UIFont.systemFont(ofSize: 24)
-            cell.mTitleLable.textColor = UIColor.red
-        } else {
-            cell.mTitleLable.font = UIFont.systemFont(ofSize: 20)
-            cell.mTitleLable.textColor = UIColor.black
-        }
         
         return cell
     }
-    
-    
-    
+
 }
 
 

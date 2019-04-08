@@ -10,7 +10,7 @@ import UIKit
 
 class lyricsViewController: UIViewController {
     
-    var lrcIndex = 0
+    var lrcIndex = 1
     
     @IBOutlet weak var mLrcTable: SCTableView!
     
@@ -21,6 +21,7 @@ class lyricsViewController: UIViewController {
         self.mLrcTable.separatorStyle = .none                 // 去掉tableView分割线
         self.mLrcTable.showsVerticalScrollIndicator = false   // 去掉tableView垂直滚动条
         self.mLrcTable.prepareLRC(lrcPath: "309769.lrc")      // 歌词解析
+        self.mLrcTable.Lrc_Index = 1;
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,6 +42,6 @@ class lyricsViewController: UIViewController {
             lrcIndex  = lrcIndex - 1
             self.mLrcTable.Lrc_Index = lrcIndex
         }
-}
+    }
 }
 
