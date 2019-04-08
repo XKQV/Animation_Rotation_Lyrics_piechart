@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MqL-lB-85j">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--歌词-->
+        <scene sceneID="lzc-Be-rjr">
+            <objects>
+                <viewController id="Ssw-gQ-vOP" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aiM-sp-MHn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="haL-nR-JVB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="歌词" id="ULV-Tn-Kly">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-15"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G3g-Hs-OUH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-105" y="1756"/>
+        </scene>
+        <!--歌曲-->
+        <scene sceneID="Wu5-Qm-ysc">
+            <objects>
+                <viewController id="IZZ-nE-5XU" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Ot-D2-zLT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hSY-6k-Uoz">
+                                <rect key="frame" x="62.5" y="194" width="250" height="250"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="8jU-cn-XBR"/>
+                                    <constraint firstAttribute="height" constant="250" id="v4Z-tO-JHi"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yvA-Tw-v11">
+                                <rect key="frame" x="112.5" y="244" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="084-mC-dbv"/>
+                                    <constraint firstAttribute="height" constant="150" id="urp-e1-xfa"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wn2-vy-Jz9">
+                                <rect key="frame" x="227" y="551" width="85" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="下一首"/>
+                                <connections>
+                                    <action selector="nextSong:" destination="IZZ-nE-5XU" eventType="touchUpInside" id="Rp8-mr-YRR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5oN-3o-qbK">
+                                <rect key="frame" x="62" y="551" width="85" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="上一首"/>
+                                <connections>
+                                    <action selector="previousSong:" destination="IZZ-nE-5XU" eventType="touchUpInside" id="pZA-Qm-2Xv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="yvA-Tw-v11" firstAttribute="centerY" secondItem="hSY-6k-Uoz" secondAttribute="centerY" id="46q-Kx-ugy"/>
+                            <constraint firstItem="hSY-6k-Uoz" firstAttribute="centerY" secondItem="fql-VL-ald" secondAttribute="centerY" id="DSL-HD-8ml"/>
+                            <constraint firstItem="yvA-Tw-v11" firstAttribute="centerX" secondItem="hSY-6k-Uoz" secondAttribute="centerX" id="hjr-Wk-j9V"/>
+                            <constraint firstItem="hSY-6k-Uoz" firstAttribute="centerX" secondItem="fql-VL-ald" secondAttribute="centerX" id="vaz-rd-RmY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fql-VL-ald"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="歌曲" id="PXf-k9-M2C">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-15"/>
+                    </tabBarItem>
+                    <connections>
+                        <outlet property="backgroundView" destination="hSY-6k-Uoz" id="57P-4o-mOR"/>
+                        <outlet property="rotatingImageView" destination="yvA-Tw-v11" id="exm-uN-ckp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EVn-E2-fQQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-106.40000000000001" y="1091.6041979010495"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="bar-bc-VyT">
+            <objects>
+                <tabBarController id="MqL-lB-85j" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Sn6-bF-moP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="IZZ-nE-5XU" kind="relationship" relationship="viewControllers" id="P0k-Ht-hKd"/>
+                        <segue destination="Ssw-gQ-vOP" kind="relationship" relationship="viewControllers" id="A8b-Si-FYO"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LSf-ag-yfm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1057" y="1424"/>
+        </scene>
+    </scenes>
+</document>
