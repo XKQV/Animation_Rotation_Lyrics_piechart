@@ -12,20 +12,73 @@
         <!--歌词-->
         <scene sceneID="lzc-Be-rjr">
             <objects>
-                <viewController id="Ssw-gQ-vOP" sceneMemberID="viewController">
+                <viewController id="Ssw-gQ-vOP" customClass="lyricsViewController" customModule="Animation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aiM-sp-MHn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UlI-Mf-haZ">
+                                <rect key="frame" x="277" y="537" width="76" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Nextline"/>
+                                <connections>
+                                    <action selector="nextline:" destination="Ssw-gQ-vOP" eventType="touchUpInside" id="onr-bi-Tex"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5UM-sZ-nxt">
+                                <rect key="frame" x="21" y="537" width="76" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Preline"/>
+                                <connections>
+                                    <action selector="preline:" destination="Ssw-gQ-vOP" eventType="touchUpInside" id="h6v-0c-BE0"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OBT-tA-wa6" customClass="SCTableView" customModule="Animation" customModuleProvider="target">
+                                <rect key="frame" x="21" y="20" width="332" height="487"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IrcCell" id="gis-hh-GfY" userLabel="IrcCell" customClass="SCLrcCell" customModule="Animation" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="332" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gis-hh-GfY" id="Jki-pP-6y6">
+                                            <rect key="frame" x="0.0" y="0.0" width="332" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofN-Qv-11t">
+                                                    <rect key="frame" x="0.0" y="5" width="332" height="28.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ofN-Qv-11t" firstAttribute="top" secondItem="Jki-pP-6y6" secondAttribute="top" constant="5" id="0cW-Lh-Rnm"/>
+                                                <constraint firstAttribute="bottom" secondItem="ofN-Qv-11t" secondAttribute="bottom" constant="10" id="EC4-O7-GbW"/>
+                                                <constraint firstItem="ofN-Qv-11t" firstAttribute="leading" secondItem="Jki-pP-6y6" secondAttribute="leading" id="Hu6-F1-RNk"/>
+                                                <constraint firstAttribute="trailing" secondItem="ofN-Qv-11t" secondAttribute="trailing" id="h4Y-Jg-faD"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="mTitleLable" destination="ofN-Qv-11t" id="JBr-9F-FF4"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="haL-nR-JVB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="歌词" id="ULV-Tn-Kly">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-15"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="mLrcTable" destination="OBT-tA-wa6" id="09I-2G-2A3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G3g-Hs-OUH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-105" y="1756"/>
+            <point key="canvasLocation" x="-106.40000000000001" y="1755.4722638680662"/>
         </scene>
         <!--歌曲-->
         <scene sceneID="Wu5-Qm-ysc">

@@ -15,6 +15,11 @@
 		EA5E3A41225AF17C002E8CE7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5E3A40225AF17C002E8CE7 /* main.m */; };
 		EA5E3A4B225AF17C002E8CE7 /* AnimationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5E3A4A225AF17C002E8CE7 /* AnimationTests.m */; };
 		EA5E3A56225AF17C002E8CE7 /* AnimationUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5E3A55225AF17C002E8CE7 /* AnimationUITests.m */; };
+		EA5E3A65225B2F58002E8CE7 /* SCTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5E3A64225B2F58002E8CE7 /* SCTableView.swift */; };
+		EA5E3A67225B2F91002E8CE7 /* 309769.lrc in Resources */ = {isa = PBXBuildFile; fileRef = EA5E3A66225B2F91002E8CE7 /* 309769.lrc */; };
+		EA5E3A69225B3056002E8CE7 /* SCLrcCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5E3A68225B3056002E8CE7 /* SCLrcCell.swift */; };
+		EA5E3A6B225B3271002E8CE7 /* SCCellAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5E3A6A225B3271002E8CE7 /* SCCellAnimation.swift */; };
+		EA5E3A6D225B332F002E8CE7 /* lyricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5E3A6C225B332F002E8CE7 /* lyricsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,12 @@
 		EA5E3A51225AF17C002E8CE7 /* AnimationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA5E3A55225AF17C002E8CE7 /* AnimationUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimationUITests.m; sourceTree = "<group>"; };
 		EA5E3A57225AF17D002E8CE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA5E3A63225B2F58002E8CE7 /* Animation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Animation-Bridging-Header.h"; sourceTree = "<group>"; };
+		EA5E3A64225B2F58002E8CE7 /* SCTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCTableView.swift; sourceTree = "<group>"; };
+		EA5E3A66225B2F91002E8CE7 /* 309769.lrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 309769.lrc; sourceTree = "<group>"; };
+		EA5E3A68225B3056002E8CE7 /* SCLrcCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCLrcCell.swift; sourceTree = "<group>"; };
+		EA5E3A6A225B3271002E8CE7 /* SCCellAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCCellAnimation.swift; sourceTree = "<group>"; };
+		EA5E3A6C225B332F002E8CE7 /* lyricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lyricsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,15 +112,21 @@
 		EA5E3A30225AF17B002E8CE7 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				EA5E3A66225B2F91002E8CE7 /* 309769.lrc */,
 				EA5E3A31225AF17B002E8CE7 /* AppDelegate.h */,
 				EA5E3A32225AF17B002E8CE7 /* AppDelegate.m */,
 				EA5E3A34225AF17B002E8CE7 /* ViewController.h */,
 				EA5E3A35225AF17B002E8CE7 /* ViewController.m */,
+				EA5E3A6C225B332F002E8CE7 /* lyricsViewController.swift */,
+				EA5E3A64225B2F58002E8CE7 /* SCTableView.swift */,
+				EA5E3A68225B3056002E8CE7 /* SCLrcCell.swift */,
+				EA5E3A6A225B3271002E8CE7 /* SCCellAnimation.swift */,
 				EA5E3A37225AF17B002E8CE7 /* Main.storyboard */,
 				EA5E3A3A225AF17C002E8CE7 /* Assets.xcassets */,
 				EA5E3A3C225AF17C002E8CE7 /* LaunchScreen.storyboard */,
 				EA5E3A3F225AF17C002E8CE7 /* Info.plist */,
 				EA5E3A40225AF17C002E8CE7 /* main.m */,
+				EA5E3A63225B2F58002E8CE7 /* Animation-Bridging-Header.h */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -199,6 +216,7 @@
 				TargetAttributes = {
 					EA5E3A2D225AF17B002E8CE7 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 					EA5E3A45225AF17C002E8CE7 = {
 						CreatedOnToolsVersion = 10.0;
@@ -238,6 +256,7 @@
 				EA5E3A3E225AF17C002E8CE7 /* LaunchScreen.storyboard in Resources */,
 				EA5E3A3B225AF17C002E8CE7 /* Assets.xcassets in Resources */,
 				EA5E3A39225AF17B002E8CE7 /* Main.storyboard in Resources */,
+				EA5E3A67225B2F91002E8CE7 /* 309769.lrc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,8 +281,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA5E3A6B225B3271002E8CE7 /* SCCellAnimation.swift in Sources */,
 				EA5E3A36225AF17B002E8CE7 /* ViewController.m in Sources */,
+				EA5E3A65225B2F58002E8CE7 /* SCTableView.swift in Sources */,
 				EA5E3A41225AF17C002E8CE7 /* main.m in Sources */,
+				EA5E3A6D225B332F002E8CE7 /* lyricsViewController.swift in Sources */,
+				EA5E3A69225B3056002E8CE7 /* SCLrcCell.swift in Sources */,
 				EA5E3A33225AF17B002E8CE7 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,6 +458,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AXBMWZHA47;
 				INFOPLIST_FILE = Animation/Info.plist;
@@ -444,6 +468,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = zhiwei.Animation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Animation/Animation-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -452,6 +479,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AXBMWZHA47;
 				INFOPLIST_FILE = Animation/Info.plist;
@@ -461,6 +489,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = zhiwei.Animation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Animation/Animation-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -468,6 +498,7 @@
 		EA5E3A5E225AF17D002E8CE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AXBMWZHA47;
@@ -487,6 +518,7 @@
 		EA5E3A5F225AF17D002E8CE7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AXBMWZHA47;
@@ -506,6 +538,7 @@
 		EA5E3A61225AF17D002E8CE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AXBMWZHA47;
 				INFOPLIST_FILE = AnimationUITests/Info.plist;
@@ -524,6 +557,7 @@
 		EA5E3A62225AF17D002E8CE7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AXBMWZHA47;
 				INFOPLIST_FILE = AnimationUITests/Info.plist;
