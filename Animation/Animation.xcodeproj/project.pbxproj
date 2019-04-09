@@ -20,6 +20,7 @@
 		EA5E3A69225B3056002E8CE7 /* SCLrcCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5E3A68225B3056002E8CE7 /* SCLrcCell.swift */; };
 		EA5E3A6B225B3271002E8CE7 /* SCCellAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5E3A6A225B3271002E8CE7 /* SCCellAnimation.swift */; };
 		EA5E3A6D225B332F002E8CE7 /* lyricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5E3A6C225B332F002E8CE7 /* lyricsViewController.swift */; };
+		EAE28ACD225B6606001119FF /* ProgressRatioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE28ACC225B6606001119FF /* ProgressRatioViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		EA5E3A68225B3056002E8CE7 /* SCLrcCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCLrcCell.swift; sourceTree = "<group>"; };
 		EA5E3A6A225B3271002E8CE7 /* SCCellAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCCellAnimation.swift; sourceTree = "<group>"; };
 		EA5E3A6C225B332F002E8CE7 /* lyricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lyricsViewController.swift; sourceTree = "<group>"; };
+		EAE28ACC225B6606001119FF /* ProgressRatioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRatioViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 			children = (
 				EA5E3A31225AF17B002E8CE7 /* AppDelegate.h */,
 				EA5E3A32225AF17B002E8CE7 /* AppDelegate.m */,
+				EAE28ACC225B6606001119FF /* ProgressRatioViewController.swift */,
 				EAE28ACB225B4481001119FF /* SongAnimation */,
 				EAE28ACA225B445F001119FF /* LyricAnimation  */,
 				EA5E3A37225AF17B002E8CE7 /* Main.storyboard */,
@@ -302,6 +305,7 @@
 				EA5E3A65225B2F58002E8CE7 /* SCTableView.swift in Sources */,
 				EA5E3A41225AF17C002E8CE7 /* main.m in Sources */,
 				EA5E3A6D225B332F002E8CE7 /* lyricsViewController.swift in Sources */,
+				EAE28ACD225B6606001119FF /* ProgressRatioViewController.swift in Sources */,
 				EA5E3A69225B3056002E8CE7 /* SCLrcCell.swift in Sources */,
 				EA5E3A33225AF17B002E8CE7 /* AppDelegate.m in Sources */,
 			);

@@ -9,6 +9,24 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--进度比-->
+        <scene sceneID="yAi-EM-kh9">
+            <objects>
+                <viewController id="2Ha-yx-Ffv" customClass="ProgressRatioViewController" customModule="Animation" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="z6z-2B-uHS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="knx-h8-Oit"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="进度比" id="FZZ-pb-Xgb">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-15"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wHn-aw-Ifv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-106" y="2541"/>
+        </scene>
         <!--歌词-->
         <scene sceneID="lzc-Be-rjr">
             <objects>
@@ -151,6 +169,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <segue destination="2Ha-yx-Ffv" kind="relationship" relationship="viewControllers" id="9I1-kG-psr"/>
                         <segue destination="IZZ-nE-5XU" kind="relationship" relationship="viewControllers" id="P0k-Ht-hKd"/>
                         <segue destination="Ssw-gQ-vOP" kind="relationship" relationship="viewControllers" id="A8b-Si-FYO"/>
                     </connections>
