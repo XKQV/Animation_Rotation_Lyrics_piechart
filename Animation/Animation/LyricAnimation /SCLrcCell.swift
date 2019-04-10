@@ -18,5 +18,34 @@ class SCLrcCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
+    
+}
+extension UILabel {
+    static var _myComputedProperty = CGFloat()
+    
+    var myComputedProperty:CGFloat {
+        get {
+            return UILabel._myComputedProperty
+        }
+        set(newValue) {
+            UILabel._myComputedProperty = newValue
+        }
+    }
+    
+    func setProgress(progress : CGFloat) -> Void {
+        myComputedProperty = progress
+        
+        self .setNeedsDisplay()
+    }
+    
+    open override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
+        
+        let fillRect = CGRect.init(x: rect.origin.x, y: rect.origin.y, width: rect.size.width*myComputedProperty, height: rect.size.height)
+        self.tintColor = UIColor.yellow
+        UIRectFillUsingBlendMode(fillRect, CGBlendMode.sourceIn)
+    }
+    
 }

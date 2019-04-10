@@ -36,6 +36,8 @@ class SCTableView: UITableView,UITableViewDelegate, UITableViewDataSource{
             self.scrollToRow(at: indexPath as IndexPath, at: .middle, animated: true)
             currentCell = self.cellForRow(at: indexPath as IndexPath) as? SCLrcCell
             currentCell?.mTitleLable.textColor = UIColor.red
+            currentCell?.mTitleLable.myComputedProperty = 0.1
+            
             // 旧的indexPath
             let oldIndexpath = NSIndexPath(row: oldValue, section: 0)
             let oldCell = self.cellForRow(at: oldIndexpath as IndexPath) as? SCLrcCell
@@ -119,7 +121,6 @@ class SCTableView: UITableView,UITableViewDelegate, UITableViewDataSource{
         
         cell.backgroundColor = UIColor.clear
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
-        
         cell.mTitleLable.numberOfLines = 0
         cell.mTitleLable.lineBreakMode = NSLineBreakMode.byWordWrapping
         cell.mTitleLable.sizeToFit()
