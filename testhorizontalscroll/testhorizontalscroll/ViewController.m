@@ -35,7 +35,7 @@
     
 }
 -(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
-    _bsBannerView.svBlock(scrollView,targetContentOffset->x,&velocity);
+    _bsBannerView.svBlock(scrollView);
 }
 
 - (void)scrolltoIndex:(int)toIndex{

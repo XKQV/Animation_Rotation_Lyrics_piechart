@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
-typedef void (^scrollViewBlock)(UIScrollView *scrollView, CGFloat targetOffset, CGPoint *velosity);
+typedef void (^scrollViewBlock)(UIScrollView *scrollView);
 @protocol BSScrollViewDidSelectDelegate <NSObject>
 
 - (void)scrolltoIndex:(int)toIndex;
