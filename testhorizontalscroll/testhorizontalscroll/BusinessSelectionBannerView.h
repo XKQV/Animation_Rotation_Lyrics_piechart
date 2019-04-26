@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
-typedef void (^scrollViewBlock)(UIScrollView *scrollView);
+typedef void (^scrollViewBlock)(CGFloat velocity, CGFloat offset);
+typedef void (^scrollViewEndDeceleratingBlock)(UIScrollView *scrollView);
 @protocol BSScrollViewDidSelectDelegate <NSObject>
 
-- (void)scrolltoIndex:(int)toIndex;
+- (void)selectedAtIndex:(int)atIndex;
 
 @end
 
@@ -25,6 +26,10 @@ typedef void (^scrollViewBlock)(UIScrollView *scrollView);
 
 @property (nonatomic, weak) id<BSScrollViewDidSelectDelegate>delegate;
 @property (nonatomic, strong) scrollViewBlock svBlock;
+@property (nonatomic, strong) scrollViewEndDeceleratingBlock svEndDeceBlock;
+
+@property (assign, nonatomic) int bfScrollIndex;
+@property (assign, nonatomic) int imageCount;
 
 - (instancetype)initWithViewRect:(CGRect)viewRect bannerImageNameArray:(NSArray *)imageNameArray;
 

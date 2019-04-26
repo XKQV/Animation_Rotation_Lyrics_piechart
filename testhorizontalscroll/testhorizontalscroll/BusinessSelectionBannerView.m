@@ -12,8 +12,9 @@
 @interface BusinessSelectionBannerView()
 
 
-@property (strong, nonatomic) NSArray<NSString *> *imageNameArray;
+@property (strong, nonatomic) NSMutableArray<NSString *> *imageNameArray;
 @property (assign, nonatomic) CGRect *viewRect;
+@property (assign, nonatomic) CGFloat scrollViewWidth;
 
 @end
 
@@ -25,14 +26,24 @@
     
     self = [super init];
     if (self) {
-        _imageNameArray = imageNameArray;
+        _imageNameArray = imageNameArray.mutableCopy;
+        [self processImageNameArray];
+        
+        self.scrollViewWidth = viewRect.size.width;
         [self setupHorizontalScrollViewWithRect:viewRect];
     }
     return self;
 }
+-(void)processImageNameArray{
+    NSString *firstObject = _imageNameArray.firstObject;
+    NSString *lastObject = _imageNameArray.lastObject;
+    [_imageNameArray addObject:firstObject];
+    [_imageNameArray insertObject:lastObject atIndex:0];
+    self.imageCount = (int)_imageNameArray.count;
+}
 
 - (void)setupHorizontalScrollViewWithRect:(CGRect)viewRect {
-
+    
     self.scrollViewWithPaging = [[UIView alloc]initWithFrame:viewRect];
     //scrollview
     self.scrollView = [[UIScrollView alloc]initWithFrame:viewRect];
@@ -41,8 +52,8 @@
     _scrollView.backgroundColor = [UIColor clearColor];
     
     int i = 0;
-    while (i<=6) {
-
+    while (i<_imageCount) {
+        
         UIView *views = [[UIView alloc] initWithFrame:CGRectMake(((_scrollView.frame.size.width)*i), 0,(_scrollView.frame.size.width), _scrollView.frame.size.height)];
         views.backgroundColor=[UIColor yellowColor];
         [views setTag:i];
@@ -61,32 +72,70 @@
     
     //page control
     self.pageControl = [[UIPageControl alloc]init];
-    self.pageControl.numberOfPages = _imageNameArray.count;
+    self.pageControl.numberOfPages = _imageNameArray.count-2;
     CGSize pageControlSize = [self.pageControl sizeThatFits:self.scrollView.bounds.size];
     self.pageControl.frame = CGRectMake(_scrollView.frame.size.width-pageControlSize.width-20, self.scrollView.bounds.size.height-pageControlSize.height,pageControlSize.width, pageControlSize.height);
     self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     [_scrollViewWithPaging addSubview:_scrollView];
     [_scrollViewWithPaging addSubview:_pageControl];
+    [_scrollView setContentOffset:CGPointMake(_scrollViewWidth, 0)];
+    
+    self.pageControl.pageIndicatorTintColor = [UIColor redColor];
     __weak typeof(self) weakSelf = self;
-    _svBlock = ^(UIScrollView *scrollView){
-
-        float width = scrollView.frame.size.width;
-        float xPos = scrollView.contentOffset.x+10;
-        weakSelf.pageControl.currentPage = (int)xPos/width;
+    _svBlock = ^(CGFloat velocity, CGFloat offset){
+        
+        
+        int toIndex = offset/weakSelf.scrollViewWidth;
+        NSLog(@"velocity is %f,offset is %f",velocity,offset);
+        NSLog(@"toindex is %d,bfscrollindex is %d",toIndex,weakSelf.bfScrollIndex);
+        
+        if (toIndex == 4 && weakSelf.bfScrollIndex == weakSelf.imageCount-2) {
+            NSLog(@"to the first");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                weakSelf.pageControl.currentPage = 0;
+            });
+        }else if (toIndex == 0 && weakSelf.bfScrollIndex == 1){
+            NSLog(@"to the last");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                weakSelf.pageControl.currentPage = weakSelf.imageCount-2;
+            });
+        }else{
+            NSLog(@"normal %d",toIndex);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                weakSelf.pageControl.currentPage = toIndex-1;
+            });
+        }
     };
+    
+    _svEndDeceBlock = ^(UIScrollView *scrollView){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            int currentIndex = scrollView.contentOffset.x / scrollView.frame.size.width;
+            NSLog(@"Current index2 %d",currentIndex);
+            if (currentIndex == 0) {
+                
+                [weakSelf.scrollView setContentOffset:CGPointMake((weakSelf.imageCount -2)*scrollView.frame.size.width, 0) animated:false];
+            }
+            if (currentIndex == (weakSelf.imageCount-1)) {
+                
+                [weakSelf.scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, 0) animated:false];
+                
+            }
+        });
+        
+    };
+    
+}
+- (void)setBfScrollIndex:(int)index{
     
 }
 
 -(void)didSelectItem{
-    int scrollToIndex = (int)(_scrollView.contentOffset.x/_scrollView.frame.size.width);
-    [self.delegate scrolltoIndex:scrollToIndex];
+    if ([self.delegate respondsToSelector:@selector(selectedAtIndex:)]) {
+        int selectedIndex = (int)(_scrollView.contentOffset.x/_scrollView.frame.size.width);
+        [self.delegate selectedAtIndex:selectedIndex];
+    }
 }
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    float width = scrollView.frame.size.width;
-    float xPos = scrollView.contentOffset.x+10;
-    _pageControl.currentPage = (int)xPos/width;
-}
 
 
 

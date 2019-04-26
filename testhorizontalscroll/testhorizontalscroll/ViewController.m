@@ -22,23 +22,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _bsBannerView = [[BusinessSelectionBannerView alloc]initWithViewRect:CGRectMake(0, 0, kScreenWidth, kScreenHeight/3) bannerImageNameArray:@[@"1.jpg", @"2.jpg", @"3.jpg", @"4.jpg", @"5.jpg", @"6.jpg", @"7.jpg"]];
+    _bsBannerView = [[BusinessSelectionBannerView alloc]initWithViewRect:CGRectMake(0, 0, kScreenWidth, kScreenHeight/3) bannerImageNameArray:@[@"1.jpg", @"2.jpg", @"3.jpg"]];
     _bsBannerView.scrollView.delegate = self;
     _bsBannerView.delegate = self;
     [self.view addSubview:_bsBannerView.scrollViewWithPaging];
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+        _bsBannerView.bfScrollIndex = scrollView.contentOffset.x/scrollView.frame.size.width;
+}
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     
+    _bsBannerView.svEndDeceBlock(scrollView);
+    
+ 
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
 }
 -(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
-    _bsBannerView.svBlock(scrollView);
+    CGFloat targetOffset = targetContentOffset->x;
+    CGFloat targetVelocity = velocity.x;
+    _bsBannerView.svBlock(targetVelocity, targetOffset);
+
 }
 
-- (void)scrolltoIndex:(int)toIndex{
-    NSLog(@"Current index %d",toIndex);
+- (void)selectedAtIndex:(int)atIndex{
+    NSLog(@"Current selected index %d",atIndex);
 }
 @end
