@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _bsBannerView = [[BusinessSelectionBannerView alloc]initWithViewRect:CGRectMake(0, 0, kScreenWidth, kScreenHeight/3) bannerImageNameArray:@[@"1.jpg", @"2.jpg", @"3.jpg",@"4.jpg",@"5.jpg"]];
+    _bsBannerView = [[BusinessSelectionBannerView alloc]initWithViewRect:CGRectMake(0, 0, kScreenWidth, kScreenHeight/3) bannerImageNameArray:@[@"1.jpg", @"2.jpg", @"3.jpg"]];
     _bsBannerView.scrollView.delegate = self;
     _bsBannerView.delegate = self;
     [self.view addSubview:_bsBannerView.scrollViewWithPaging];
@@ -30,6 +30,7 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
         _bsBannerView.bfScrollIndex = scrollView.contentOffset.x/scrollView.frame.size.width;
+    
     [_bsBannerView cancelTimer];
 }
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {

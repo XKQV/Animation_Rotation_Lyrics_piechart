@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSMutableArray<NSString *> *imageNameArray;
 @property (assign, nonatomic) CGRect *viewRect;
 @property (assign, nonatomic) CGFloat scrollViewWidth;
+@property (assign, nonatomic) BOOL  isGoForward;
 
 @end
 
@@ -38,12 +39,12 @@
     __weak typeof(self) weakSelf = self;
     int index;
     if (scrollView) {
-         index = scrollView.contentOffset.x/scrollView.frame.size.width;
+        index = scrollView.contentOffset.x/scrollView.frame.size.width;
     }else{
         index = 1;
     }
-    
-//    NSLog(@"bfindex is %d, indexpassed %d",_bfScrollIndex,index);
+
+    //    NSLog(@"bfindex is %d, indexpassed %d",_bfScrollIndex,index);
     if (index == _imageCount-2) {
         _bfScrollIndex = 1;
     }else{
@@ -125,21 +126,29 @@
         
         
         int toIndex = offset/weakSelf.scrollViewWidth;
-//                NSLog(@"velocity is %f,offset is %f",velocity,offset);
-//                NSLog(@"toindex is %d,bfscrollindex is %d",toIndex,weakSelf.bfScrollIndex);
+        //                NSLog(@"velocity is %f,offset is %f",velocity,offset);
+        //                NSLog(@"toindex is %d,bfscrollindex is %d",toIndex,weakSelf.bfScrollIndex);
+        
+        if (toIndex < weakSelf.bfScrollIndex) {
+            NSLog(@"go back");
+            weakSelf.isGoForward = false;
+        }else{
+            NSLog(@"go forward");
+            weakSelf.isGoForward = true;
+        }
         
         if (toIndex == weakSelf.imageCount-1 && weakSelf.bfScrollIndex == weakSelf.imageCount-2) {
-                        NSLog(@"to the first");
+            NSLog(@"to the first");
             dispatch_async(dispatch_get_main_queue(), ^{
                 weakSelf.pageControl.currentPage = 0;
             });
         }else if (toIndex == 0 && weakSelf.bfScrollIndex == 1){
-                        NSLog(@"to the last");
+            NSLog(@"to the last");
             dispatch_async(dispatch_get_main_queue(), ^{
                 weakSelf.pageControl.currentPage = weakSelf.imageCount-2;
             });
         }else{
-                        NSLog(@"normal %d",toIndex);
+            NSLog(@"normal %d",toIndex);
             dispatch_async(dispatch_get_main_queue(), ^{
                 weakSelf.pageControl.currentPage = toIndex-1;
             });
