@@ -11,6 +11,7 @@
 		8E2856EBA22C2AB564568E1D /* Pods_testhorizontalscrollTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C5792294F277E7C9B01A4E /* Pods_testhorizontalscrollTests.framework */; };
 		C4DA9B5C60B270387C442D75 /* Pods_testhorizontalscrollUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71E8DA88666DB35310D098EF /* Pods_testhorizontalscrollUITests.framework */; };
 		EA69CBF022714A8300DA87C5 /* BusinessSelectionBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA69CBEF22714A8300DA87C5 /* BusinessSelectionBannerView.m */; };
+		EA74D0632272F8EF0099F138 /* CustomisedPagecontrol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA74D0622272F8EF0099F138 /* CustomisedPagecontrol.swift */; };
 		EAA71D2A227040570083C6FD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA71D29227040570083C6FD /* AppDelegate.m */; };
 		EAA71D2D227040570083C6FD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA71D2C227040570083C6FD /* ViewController.m */; };
 		EAA71D30227040570083C6FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAA71D2E227040570083C6FD /* Main.storyboard */; };
@@ -59,6 +60,8 @@
 		B7C5792294F277E7C9B01A4E /* Pods_testhorizontalscrollTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_testhorizontalscrollTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA69CBEE22714A8300DA87C5 /* BusinessSelectionBannerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BusinessSelectionBannerView.h; sourceTree = "<group>"; };
 		EA69CBEF22714A8300DA87C5 /* BusinessSelectionBannerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BusinessSelectionBannerView.m; sourceTree = "<group>"; };
+		EA74D0612272F8EE0099F138 /* testhorizontalscroll-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "testhorizontalscroll-Bridging-Header.h"; sourceTree = "<group>"; };
+		EA74D0622272F8EF0099F138 /* CustomisedPagecontrol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomisedPagecontrol.swift; sourceTree = "<group>"; };
 		EAA71D25227040570083C6FD /* testhorizontalscroll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testhorizontalscroll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAA71D28227040570083C6FD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EAA71D29227040570083C6FD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -77,7 +80,7 @@
 		EAA71D4E227040590083C6FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAA71D5A227040730083C6FD /* ISHorizontalPagingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISHorizontalPagingScrollView.h; sourceTree = "<group>"; };
 		EAA71D5B227040740083C6FD /* ISHorizontalPagingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISHorizontalPagingScrollView.m; sourceTree = "<group>"; };
-		EAA71D5D227054370083C6FD /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		EAA71D5D227054370083C6FD /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		EAA71D5F22705DE20083C6FD /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 1.jpg; path = Assets.xcassets/1.jpg; sourceTree = "<group>"; };
 		EAA71D6022705DE20083C6FD /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 4.jpg; path = Assets.xcassets/4.jpg; sourceTree = "<group>"; };
 		EAA71D6122705DE20083C6FD /* 7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 7.jpg; path = Assets.xcassets/7.jpg; sourceTree = "<group>"; };
@@ -184,6 +187,8 @@
 				EAA71D36227040590083C6FD /* Info.plist */,
 				EAA71D37227040590083C6FD /* main.m */,
 				EAA71D5D227054370083C6FD /* Podfile */,
+				EA74D0622272F8EF0099F138 /* CustomisedPagecontrol.swift */,
+				EA74D0612272F8EE0099F138 /* testhorizontalscroll-Bridging-Header.h */,
 			);
 			path = testhorizontalscroll;
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 				TargetAttributes = {
 					EAA71D24227040570083C6FD = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 					EAA71D3C227040590083C6FD = {
 						CreatedOnToolsVersion = 10.0;
@@ -370,10 +376,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-testhorizontalscroll/Pods-testhorizontalscroll-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSPagerView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -424,6 +432,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAA71D2D227040570083C6FD /* ViewController.m in Sources */,
+				EA74D0632272F8EF0099F138 /* CustomisedPagecontrol.swift in Sources */,
 				EAA71D38227040590083C6FD /* main.m in Sources */,
 				EAA71D2A227040570083C6FD /* AppDelegate.m in Sources */,
 				EA69CBF022714A8300DA87C5 /* BusinessSelectionBannerView.m in Sources */,
@@ -599,6 +608,7 @@
 			baseConfigurationReference = 0DFA1349D5796E36975B9218 /* Pods-testhorizontalscroll.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 99LSSXFZX4;
 				INFOPLIST_FILE = testhorizontalscroll/Info.plist;
@@ -608,6 +618,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = zhiwei.testhorizontalscroll;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "testhorizontalscroll/testhorizontalscroll-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -617,6 +630,7 @@
 			baseConfigurationReference = 3B41C32492706C12C7E2E166 /* Pods-testhorizontalscroll.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 99LSSXFZX4;
 				INFOPLIST_FILE = testhorizontalscroll/Info.plist;
@@ -626,6 +640,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = zhiwei.testhorizontalscroll;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "testhorizontalscroll/testhorizontalscroll-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -634,6 +650,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3E43D872DCF5673898D7D9DD /* Pods-testhorizontalscrollTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AXBMWZHA47;
@@ -654,6 +671,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 28885D9C21B897B654BD4BA0 /* Pods-testhorizontalscrollTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AXBMWZHA47;
@@ -674,6 +692,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 35383C0FBC018DB762F8C04B /* Pods-testhorizontalscrollUITests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AXBMWZHA47;
 				INFOPLIST_FILE = testhorizontalscrollUITests/Info.plist;
@@ -693,6 +712,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7B0EE4E3233D9C2ADE8E40A2 /* Pods-testhorizontalscrollUITests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AXBMWZHA47;
 				INFOPLIST_FILE = testhorizontalscrollUITests/Info.plist;

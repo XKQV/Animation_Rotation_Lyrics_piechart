@@ -7,13 +7,13 @@
 //
 
 #import "BusinessSelectionBannerView.h"
-
+#import "SDWebImage.h"
 
 @interface BusinessSelectionBannerView()
 
 
 @property (strong, nonatomic) NSMutableArray<NSString *> *imageNameArray;
-@property (assign, nonatomic) CGRect *viewRect;
+@property (assign, nonatomic) CGRect viewRect;
 @property (assign, nonatomic) CGFloat scrollViewWidth;
 @property (assign, nonatomic) BOOL  isGoForward;
 
@@ -30,8 +30,8 @@
         _imageNameArray = imageNameArray.mutableCopy;
         [self processImageNameArray];
         self.scrollViewWidth = viewRect.size.width;
+        self.viewRect = viewRect;
         [self setupHorizontalScrollViewWithRect:viewRect];
-        [self startTimerWithScrollView:nil];
     }
     return self;
 }
@@ -61,6 +61,8 @@
         }else if (weakSelf.bfScrollIndex == weakSelf.imageCount -2 || weakSelf.bfScrollIndex == 0){
             weakSelf.bfScrollIndex ++;
             weakSelf.pageControl.currentPage = 0;
+//            weakSelf.pageControl.transform = CGAffineTransformMakeScale(1.5, 1.0);
+            
             [weakSelf.scrollView setContentOffset:CGPointMake(weakSelf.bfScrollIndex * weakSelf.scrollView.frame.size.width, 0) animated:YES];
             [weakSelf.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
             [weakSelf.scrollView setContentOffset:CGPointMake(weakSelf.scrollView.frame.size.width, 0) animated:YES];
@@ -80,6 +82,9 @@
     [_imageNameArray addObject:firstObject];
     [_imageNameArray insertObject:lastObject atIndex:0];
     self.imageCount = (int)_imageNameArray.count;
+    if (_imageCount > 3) {
+        [self startTimerWithScrollView:nil];
+    }
 }
 
 - (void)setupHorizontalScrollViewWithRect:(CGRect)viewRect {
@@ -95,10 +100,11 @@
     while (i<_imageCount) {
         
         UIView *views = [[UIView alloc] initWithFrame:CGRectMake(((_scrollView.frame.size.width)*i), 0,(_scrollView.frame.size.width), _scrollView.frame.size.height)];
-        views.backgroundColor=[UIColor yellowColor];
+        views.backgroundColor=[UIColor clearColor];
         [views setTag:i];
         UIImageView *tempImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, views.frame.size.width, views.frame.size.height)];
-        tempImageView.image = [UIImage imageNamed:_imageNameArray[i]];
+        
+        [tempImageView sd_setImageWithURL:[NSURL URLWithString: _imageNameArray[i]]];
         tempImageView.contentMode = UIViewContentModeScaleAspectFill;
         tempImageView.clipsToBounds = YES;
         [views addSubview:tempImageView];
@@ -119,12 +125,18 @@
     [_scrollViewWithPaging addSubview:_scrollView];
     [_scrollViewWithPaging addSubview:_pageControl];
     [_scrollView setContentOffset:CGPointMake(_scrollViewWidth, 0)];
-    
     self.pageControl.pageIndicatorTintColor = [UIColor redColor];
+   
+    
+    if (self.imageCount <= 3) {
+        _scrollView.scrollEnabled = false;
+        _scrollView.pagingEnabled = false;
+        [_pageControl removeFromSuperview];
+        return;
+    }
+    
     __weak typeof(self) weakSelf = self;
     _svBlock = ^(CGFloat velocity, CGFloat offset){
-        
-        
         int toIndex = offset/weakSelf.scrollViewWidth;
         //                NSLog(@"velocity is %f,offset is %f",velocity,offset);
         //                NSLog(@"toindex is %d,bfscrollindex is %d",toIndex,weakSelf.bfScrollIndex);
@@ -161,9 +173,9 @@
             //            NSLog(@"Current index2 %d",currentIndex);
             if (currentIndex == 0) {
                 
-                [weakSelf.scrollView setContentOffset:CGPointMake((weakSelf.imageCount -2)*scrollView.frame.size.width, 0) animated:false];
+                [weakSelf.scrollView setContentOffset:CGPointMake((weakSelf.imageCount - 2)*scrollView.frame.size.width, 0) animated:false];
             }
-            if (currentIndex == (weakSelf.imageCount-1)) {
+            if (currentIndex == (weakSelf.imageCount - 1)) {
                 
                 [weakSelf.scrollView setContentOffset:CGPointMake(scrollView.frame.size.width, 0) animated:false];
                 
@@ -174,11 +186,10 @@
     
 }
 
-
 -(void)didSelectItem{
     if ([self.delegate respondsToSelector:@selector(selectedAtIndex:)]) {
         int selectedIndex = (int)(_scrollView.contentOffset.x/_scrollView.frame.size.width);
-        [self.delegate selectedAtIndex:selectedIndex];
+        [self.delegate selectedAtIndex:selectedIndex - 1];
     }
 }
 

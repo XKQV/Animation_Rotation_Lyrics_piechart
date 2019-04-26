@@ -18,15 +18,15 @@ typedef void (^scrollViewEndDeceleratingBlock)(UIScrollView *scrollView);
 @end
 
 
-@interface BusinessSelectionBannerView : NSObject<UIScrollViewDelegate>
+@interface BusinessSelectionBannerView : UIView<UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIView *scrollViewWithPaging;
 @property (strong, nonatomic) UIPageControl *pageControl;
 
 @property (nonatomic, weak) id<BSScrollViewDidSelectDelegate>delegate;
-@property (nonatomic, strong) scrollViewBlock svBlock;
-@property (nonatomic, strong) scrollViewEndDeceleratingBlock svEndDeceBlock;
+@property (nonatomic, copy) scrollViewBlock svBlock;
+@property (nonatomic, copy) scrollViewEndDeceleratingBlock svEndDeceBlock;
 
 @property (assign, nonatomic) int bfScrollIndex;
 @property (assign, nonatomic) int imageCount;
