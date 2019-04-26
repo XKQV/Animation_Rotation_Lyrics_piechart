@@ -28,11 +28,50 @@
     if (self) {
         _imageNameArray = imageNameArray.mutableCopy;
         [self processImageNameArray];
-        
         self.scrollViewWidth = viewRect.size.width;
         [self setupHorizontalScrollViewWithRect:viewRect];
+        [self startTimerWithScrollView:nil];
     }
     return self;
+}
+- (void)startTimerWithScrollView:(UIScrollView *)scrollView{
+    __weak typeof(self) weakSelf = self;
+    int index;
+    if (scrollView) {
+         index = scrollView.contentOffset.x/scrollView.frame.size.width;
+    }else{
+        index = 1;
+    }
+    
+//    NSLog(@"bfindex is %d, indexpassed %d",_bfScrollIndex,index);
+    if (index == _imageCount-2) {
+        _bfScrollIndex = 1;
+    }else{
+        _bfScrollIndex = index;
+    }
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:3.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        
+        NSLog(@"bfindex %d",weakSelf.bfScrollIndex);
+        if (weakSelf.bfScrollIndex < (weakSelf.imageCount -2) && weakSelf.bfScrollIndex){
+            weakSelf.bfScrollIndex ++;
+            [weakSelf.scrollView setContentOffset:CGPointMake(weakSelf.bfScrollIndex * weakSelf.scrollView.frame.size.width, 0) animated:YES];
+            weakSelf.pageControl.currentPage = weakSelf.bfScrollIndex-1;
+            
+        }else if (weakSelf.bfScrollIndex == weakSelf.imageCount -2 || weakSelf.bfScrollIndex == 0){
+            weakSelf.bfScrollIndex ++;
+            weakSelf.pageControl.currentPage = 0;
+            [weakSelf.scrollView setContentOffset:CGPointMake(weakSelf.bfScrollIndex * weakSelf.scrollView.frame.size.width, 0) animated:YES];
+            [weakSelf.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
+            [weakSelf.scrollView setContentOffset:CGPointMake(weakSelf.scrollView.frame.size.width, 0) animated:YES];
+            weakSelf.bfScrollIndex = 1;
+        };
+    }];
+}
+
+
+- (void)cancelTimer {
+    [self.timer invalidate];
+    _timer = nil;
 }
 -(void)processImageNameArray{
     NSString *firstObject = _imageNameArray.firstObject;
@@ -86,21 +125,21 @@
         
         
         int toIndex = offset/weakSelf.scrollViewWidth;
-        NSLog(@"velocity is %f,offset is %f",velocity,offset);
-        NSLog(@"toindex is %d,bfscrollindex is %d",toIndex,weakSelf.bfScrollIndex);
+//                NSLog(@"velocity is %f,offset is %f",velocity,offset);
+//                NSLog(@"toindex is %d,bfscrollindex is %d",toIndex,weakSelf.bfScrollIndex);
         
-        if (toIndex == 4 && weakSelf.bfScrollIndex == weakSelf.imageCount-2) {
-            NSLog(@"to the first");
+        if (toIndex == weakSelf.imageCount-1 && weakSelf.bfScrollIndex == weakSelf.imageCount-2) {
+                        NSLog(@"to the first");
             dispatch_async(dispatch_get_main_queue(), ^{
                 weakSelf.pageControl.currentPage = 0;
             });
         }else if (toIndex == 0 && weakSelf.bfScrollIndex == 1){
-            NSLog(@"to the last");
+                        NSLog(@"to the last");
             dispatch_async(dispatch_get_main_queue(), ^{
                 weakSelf.pageControl.currentPage = weakSelf.imageCount-2;
             });
         }else{
-            NSLog(@"normal %d",toIndex);
+                        NSLog(@"normal %d",toIndex);
             dispatch_async(dispatch_get_main_queue(), ^{
                 weakSelf.pageControl.currentPage = toIndex-1;
             });
@@ -110,7 +149,7 @@
     _svEndDeceBlock = ^(UIScrollView *scrollView){
         dispatch_async(dispatch_get_main_queue(), ^{
             int currentIndex = scrollView.contentOffset.x / scrollView.frame.size.width;
-            NSLog(@"Current index2 %d",currentIndex);
+            //            NSLog(@"Current index2 %d",currentIndex);
             if (currentIndex == 0) {
                 
                 [weakSelf.scrollView setContentOffset:CGPointMake((weakSelf.imageCount -2)*scrollView.frame.size.width, 0) animated:false];
@@ -125,9 +164,7 @@
     };
     
 }
-- (void)setBfScrollIndex:(int)index{
-    
-}
+
 
 -(void)didSelectItem{
     if ([self.delegate respondsToSelector:@selector(selectedAtIndex:)]) {

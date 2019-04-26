@@ -31,7 +31,11 @@ typedef void (^scrollViewEndDeceleratingBlock)(UIScrollView *scrollView);
 @property (assign, nonatomic) int bfScrollIndex;
 @property (assign, nonatomic) int imageCount;
 
+@property (strong, nonatomic) NSTimer *timer;
+
 - (instancetype)initWithViewRect:(CGRect)viewRect bannerImageNameArray:(NSArray *)imageNameArray;
+- (void)startTimerWithScrollView:(nullable UIScrollView *)scrollView;
+- (void)cancelTimer;
 
 @end
 
