@@ -1,0 +1,6 @@
+framework module Pods_BSHorizontalScrollViewUITests {
+  umbrella header "Pods-BSHorizontalScrollViewUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module Pods_BSHorizontalScrollView {
+  umbrella header "Pods-BSHorizontalScrollView-umbrella.h"
+
+  export *
+  module * { export * }
+}
