@@ -21,8 +21,10 @@
 - (instancetype)initWithViewRect:(CGRect)viewRect bannerImageNameArray:(NSArray *)imageNameArray{
     self = [super init];
     if (self) {
+        if (imageNameArray.count == 0) {
+            return self;
+        }
         self.imageArray = imageNameArray.mutableCopy;
-        self.imageCount = _imageArray.count;
         self.scrollViewWidth = viewRect.size.width;
         self.scrollViewHeight = viewRect.size.height;
         self.viewRect = viewRect;
@@ -32,20 +34,12 @@
     return self;
 }
 - (void)setupHorizontalScrollView {
-    if (_imageCount == 0 || _imageCount > 5) {
+    if (_imageCount == 0 || _imageCount > 7) {
         return;
     }
     self.scrollView = [[UIScrollView alloc]initWithFrame:_viewRect];
-    self.pageControl = [[SnakePageControl alloc]init];
     
-    CGSize pageControlSize = [self.pageControl sizeThatFits:self.scrollView.bounds.size];
-    self.pageControl.frame = CGRectMake(_scrollView.frame.size.width-pageControlSize.width-20, self.scrollView.bounds.size.height-pageControlSize.height,pageControlSize.width, pageControlSize.height);
-    self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-   
-    [_scrollView setContentOffset:CGPointMake(_scrollViewWidth, 0)];
-    
-  
-    
+    //setup scroll view
     for (int i = 0; i < self.imageArray.count; i++) {
         
         UIView *views = [[UIView alloc] initWithFrame:CGRectMake((_scrollViewWidth*i), 0,_scrollViewWidth, _scrollViewHeight)];
@@ -63,6 +57,15 @@
     _scrollView.contentSize = CGSizeMake(_imageArray.count*_scrollViewWidth, 0);
     _scrollView.contentOffset = CGPointMake(_scrollViewWidth, 0);
     _scrollView.bounces = NO;
+    
+    //setup page control
+    self.pageControl = [[SnakePageControl alloc]init];
+    self.pageControl.pageCount = _imageCount-2;
+    CGSize pageControlSize = [self.pageControl sizeThatFits:self.scrollView.bounds.size];
+    self.pageControl.frame = CGRectMake(_scrollView.frame.size.width-pageControlSize.width-20, self.scrollView.bounds.size.height-pageControlSize.height-20,pageControlSize.width, pageControlSize.height);
+    self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+    [_scrollView setContentOffset:CGPointMake(_scrollViewWidth, 0)];
+    
     
     __weak typeof(self) weakSelf = self;
     //scrollViewDidEndDecelerating
@@ -87,7 +90,7 @@
         CGFloat page = svDidScroll.contentOffset.x / svDidScroll.bounds.size.width;
         CGFloat progressInPage = svDidScroll.contentOffset.x - (page * svDidScroll.bounds.size.width);
         CGFloat progress = (CGFloat)page + progressInPage;
-        weakSelf.pageControl.progress = progress;
+        weakSelf.pageControl.progress = progress-1;
     };
     
     [self.scrollView addSubview:_pageControl];
@@ -99,15 +102,16 @@
 
 
 -(void)processImageNameArray{
-    if (_imageCount == 0) {
+    if (_imageArray.count == 0) {
         return;
-    }else if (_imageCount == 1){
-        
-    }else if (_imageCount <= 5) {
+    }else if (_imageArray.count == 1){
+        _imageCount = _imageArray.count;
+    }else if (_imageArray.count <= 5) {
         NSString *firstObject = _imageArray.firstObject;
         NSString *lastObject = _imageArray.lastObject;
         [_imageArray addObject:firstObject];
         [_imageArray insertObject:lastObject atIndex:0];
+        _imageCount = _imageArray.count;
     }else{
         return;
     }

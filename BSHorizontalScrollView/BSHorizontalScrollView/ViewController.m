@@ -32,6 +32,7 @@
     
     _bsBannerView.scrollView.delegate = self;
     [self.view addSubview:_bsBannerView.scrollView];
+    [self.view addSubview:_bsBannerView.pageControl];
 }
 /*
  假设  scrollview展示三个View  红 黄 蓝
