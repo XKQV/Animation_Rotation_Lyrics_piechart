@@ -13,8 +13,6 @@
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 @interface ViewController ()<UIScrollViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIScrollView *myscrollView;
-
 @property (nonatomic,strong)NSArray *colorsArray;
 @property (nonatomic,strong)NSTimer *timer;
 @property (nonatomic, strong) BSHorizontalScrollView *bsBannerView;
@@ -27,12 +25,16 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     //    self.myscrollView.delegate = self;
-    _bsBannerView = [[BSHorizontalScrollView alloc]initWithViewRect:CGRectMake(0, 0, kScreenWidth, kScreenHeight/3) bannerImageNameArray: @[                                                                                                                                           @"https://www.gstatic.com/webp/gallery/4.sm.jpg", @"https://www.gstatic.com/webp/gallery3/2.sm.png",@"https://www.gstatic.com/webp/gallery/1.sm.jpg",@"https://www.gstatic.com/webp/gallery/5.sm.jpg"]];
+//    _bsBannerView = [[BSHorizontalScrollView alloc]initWithViewRect:CGRectMake(0, 0, kScreenWidth, kScreenHeight/3) bannerImageNameArray: @[                                                                                                                                           @"https://www.gstatic.com/webp/gallery/4.sm.jpg", @"https://www.gstatic.com/webp/gallery3/2.sm.png",@"https://www.gstatic.com/webp/gallery/1.sm.jpg",@"https://www.gstatic.com/webp/gallery/5.sm.jpg",@"https://homepages.cae.wisc.edu/~ece533/images/pool.png"]];
+//        _bsBannerView = [[BSHorizontalScrollView alloc]initWithViewRect:CGRectMake(0, 0, kScreenWidth, kScreenHeight/3) bannerImageNameArray: @[                                                                                                                                            @"https://homepages.cae.wisc.edu/~ece533/images/mountain.png",@"https://www.gstatic.com/webp/gallery/1.sm.jpg",@"https://www.gstatic.com/webp/gallery/5.sm.jpg",@"https://homepages.cae.wisc.edu/~ece533/images/pool.png"]];
+            _bsBannerView = [[BSHorizontalScrollView alloc]initWithViewRect:CGRectMake(0, 0, kScreenWidth, kScreenHeight/3) bannerImageNameArray: @[                                                                                                                                            @"https://homepages.cae.wisc.edu/~ece533/images/mountain.png",@"https://www.gstatic.com/webp/gallery/5.sm.jpg",@"https://homepages.cae.wisc.edu/~ece533/images/pool.png"]];
+//        _bsBannerView = [[BSHorizontalScrollView alloc]initWithViewRect:CGRectMake(0, 0, kScreenWidth, kScreenHeight/3) bannerImageNameArray: @[                                                                                                                                           @"https://www.gstatic.com/webp/gallery/4.sm.jpg"]];
+    
     //  @[@"1.jpg",@"2.jpg",@"3.jpg"]];
     
     _bsBannerView.scrollView.delegate = self;
-    [self.view addSubview:_bsBannerView.scrollView];
-    [self.view addSubview:_bsBannerView.pageControl];
+    [self.view addSubview:_bsBannerView.scrollViewWithPaging];
+//    [self.view addSubview:_bsBannerView.pageControl];
 }
 /*
  假设  scrollview展示三个View  红 黄 蓝
@@ -55,7 +57,7 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    NSLog(@"EndDecelerating");
+//    NSLog(@"EndDecelerating");
     _bsBannerView.svDidEndDeceler(scrollView);
     
 }
@@ -66,7 +68,7 @@
  */
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
-    NSLog(@"EndScrollingAnimation");
+//    NSLog(@"EndScrollingAnimation");
     _bsBannerView.svDidEndScoAni(scrollView);
     
 }
@@ -77,7 +79,7 @@
  */
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    NSLog(@"WillBeginDragging");
+//    NSLog(@"WillBeginDragging");
     [_bsBannerView  invalidateTimer];
 }
 /**
@@ -88,7 +90,7 @@
  */
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-        NSLog(@"EndDragging");
+//        NSLog(@"EndDragging");
     [_bsBannerView addTimer];
 }
 - (void)didReceiveMemoryWarning {

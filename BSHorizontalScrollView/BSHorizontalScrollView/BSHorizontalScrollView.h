@@ -15,11 +15,14 @@ typedef void (^scrollViewDidEndScrollingAnimation)(UIScrollView *svDidEndScoAni)
 typedef void (^scrollViewDidScroll)(UIScrollView *svDidScroll);
 
 @interface BSHorizontalScrollView : UIView
+@property (strong, nonatomic) UIView *scrollViewWithPaging;
+@property (strong, nonatomic) SnakePageControl *pageControl;
 @property (strong, nonatomic) UIScrollView *scrollView;
+
 @property (assign, nonatomic) CGRect viewRect;
 @property (nonatomic,strong) NSMutableArray *imageArray;
 @property (nullable,nonatomic,strong) NSTimer *timer;
-@property (strong, nonatomic) SnakePageControl *pageControl;
+
 
 @property (nonatomic, copy) scrollViewDidEndDeceleratingBlock svDidEndDeceler;
 @property (nonatomic, copy) scrollViewDidEndScrollingAnimation svDidEndScoAni;

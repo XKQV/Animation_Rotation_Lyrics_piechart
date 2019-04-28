@@ -37,16 +37,15 @@
     if (_imageCount == 0 || _imageCount > 7) {
         return;
     }
+    //setup scroll view
+    self.scrollViewWithPaging = [[UIView alloc]initWithFrame:_viewRect];
     self.scrollView = [[UIScrollView alloc]initWithFrame:_viewRect];
     
-    //setup scroll view
     for (int i = 0; i < self.imageArray.count; i++) {
         
         UIView *views = [[UIView alloc] initWithFrame:CGRectMake((_scrollViewWidth*i), 0,_scrollViewWidth, _scrollViewHeight)];
         UIImageView *tempImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, _scrollViewWidth, _scrollViewHeight)];
         [tempImageView sd_setImageWithURL:[NSURL URLWithString: _imageArray[i]]];
-        //        UIImage *image = [UIImage imageNamed:_imageArray[i]];
-        //        tempImageView.image = image;
         tempImageView.contentMode = UIViewContentModeScaleAspectFill;
         tempImageView.clipsToBounds = YES;
         [views addSubview:tempImageView];
@@ -55,17 +54,26 @@
     _scrollView.pagingEnabled = YES;
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.contentSize = CGSizeMake(_imageArray.count*_scrollViewWidth, 0);
-    _scrollView.contentOffset = CGPointMake(_scrollViewWidth, 0);
     _scrollView.bounces = NO;
+    [self.scrollViewWithPaging addSubview:_scrollView];
     
-    //setup page control
-    self.pageControl = [[SnakePageControl alloc]init];
-    self.pageControl.pageCount = _imageCount-2;
-    CGSize pageControlSize = [self.pageControl sizeThatFits:self.scrollView.bounds.size];
-    self.pageControl.frame = CGRectMake(_scrollView.frame.size.width-pageControlSize.width-20, self.scrollView.bounds.size.height-pageControlSize.height-20,pageControlSize.width, pageControlSize.height);
-    self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-    [_scrollView setContentOffset:CGPointMake(_scrollViewWidth, 0)];
-    
+    //setup page control and add timer if there are more than one images
+    if (_imageCount > 1) {
+        self.pageControl = [[SnakePageControl alloc]init];
+        self.pageControl.pageCount = _imageCount-2;
+        CGSize pageControlSize = [self.pageControl sizeThatFits:self.scrollView.bounds.size];
+        self.pageControl.frame = CGRectMake(_scrollView.frame.size.width-pageControlSize.width-20, self.scrollView.bounds.size.height-pageControlSize.height-20,pageControlSize.width, pageControlSize.height);
+        self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+        
+        //add pagecontrol
+        [self.scrollViewWithPaging addSubview:_pageControl];
+        
+        _scrollView.contentOffset = CGPointMake(_scrollViewWidth, 0);
+        
+        [self addTimer];
+    } else if (_imageCount == 1){
+        _scrollView.contentOffset = CGPointMake(0, 0);
+    }
     
     __weak typeof(self) weakSelf = self;
     //scrollViewDidEndDecelerating
@@ -93,11 +101,7 @@
         weakSelf.pageControl.progress = progress-1;
     };
     
-    [self.scrollView addSubview:_pageControl];
     
-    if (_imageCount > 1) {
-        [self addTimer];
-    }
 }
 
 
