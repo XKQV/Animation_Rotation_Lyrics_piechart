@@ -16,15 +16,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (assign, nonatomic) CGFloat progress;
 
-@property (assign, nonatomic) int currentPage;
-
-@property (readonly, nonatomic) UIColor *activeTint;
-
-@property (readonly, nonatomic) UIColor *inactiveTint;
-
-@property (assign, nonatomic) CGFloat indicatorPadding;
-
-@property (assign, nonatomic) CGFloat indicatorRadius;
+//@property (assign, nonatomic) int currentPage;
+//
+//@property (readonly, nonatomic) UIColor *activeTint;
+//
+//@property (readonly, nonatomic) UIColor *inactiveTint;
+//
+//@property (assign, nonatomic) CGFloat indicatorPadding;
+//
+//@property (assign, nonatomic) CGFloat indicatorRadius;
 
 -(CGSize)intrinsicContentSize;
 

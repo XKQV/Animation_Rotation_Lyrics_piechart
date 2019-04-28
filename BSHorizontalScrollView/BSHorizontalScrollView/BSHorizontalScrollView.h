@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BSHorizontalScrollView-Swift.h"
-//#import "SnakePageControl.h"
+//#import "BSHorizontalScrollView-Swift.h"
+#import "SnakePageControl.h"
 
 NS_ASSUME_NONNULL_BEGIN
 typedef void (^scrollViewDidEndDeceleratingBlock)(UIScrollView *svDidEndDeceler);

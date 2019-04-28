@@ -65,7 +65,7 @@
 -(CALayer *)activeLayer {
     
     CALayer *layer = [CALayer new];
-    layer.frame = CGRectMake(0, 0, _indicatorRadius * 2, _indicatorRadius * 2);
+    layer.frame = CGRectMake(0, 0, [self indicatorRadius] * 2, [self indicatorRadius] * 2);
     
     layer.backgroundColor = self.activeTint.CGColor;
     layer.cornerRadius = self.indicatorRadius;
@@ -123,9 +123,9 @@
     
     CGRect layerFrame = CGRectMake(0, 0, [self indicatorDiameter], [self indicatorDiameter]);
     for (CALayer *layer in layers) {
-        layer.cornerRadius = _indicatorRadius;
+        layer.cornerRadius = [self indicatorRadius];
         layer.frame = layerFrame;
-        layerFrame.origin.x += [self indicatorDiameter] + _indicatorPadding;
+        layerFrame.origin.x += [self indicatorDiameter] + [self indicatorPadding] ;
     }
     
 }
@@ -137,7 +137,7 @@
 
 -(CGSize)sizeThatFits:(CGSize)size {
     
-    return CGSizeMake( _inactiveLayers.count * [self indicatorDiameter] + (CGFloat)(_inactiveLayers.count - 1) * _indicatorPadding , [self indicatorDiameter]);
+    return CGSizeMake( _inactiveLayers.count * [self indicatorDiameter] + (CGFloat)(_inactiveLayers.count - 1) * [self indicatorPadding] , [self indicatorDiameter]);
     
 }
 
