@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4CD1FC69D3615659D5C2D956 /* libPods-BSHorizontalScrollViewTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15737AD36276451DA9851BF6 /* libPods-BSHorizontalScrollViewTests.a */; };
-		9B8D18670A65D238218EAD65 /* libPods-BSHorizontalScrollViewUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D874797E54D8EA35E4F4361C /* libPods-BSHorizontalScrollViewUITests.a */; };
-		D2864D2C723372ADD94234A9 /* libPods-BSHorizontalScrollView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCF81625141538F4E2EC15C9 /* libPods-BSHorizontalScrollView.a */; };
+		4A0718965FB025F3A83CD07F /* Pods_BSHorizontalScrollViewTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0C1ABF7209065B029798B3 /* Pods_BSHorizontalScrollViewTests.framework */; };
+		AFF62B7B85B89A9BD31F549B /* Pods_BSHorizontalScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5FCF8A62B2844C1F7C70CAA /* Pods_BSHorizontalScrollView.framework */; };
+		DB892C2D4CCDDB8107493D8E /* Pods_BSHorizontalScrollViewUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEAC5BB0ED945C5389E63C68 /* Pods_BSHorizontalScrollViewUITests.framework */; };
 		EAF94E51227559A8003D7D6F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF94E50227559A8003D7D6F /* AppDelegate.m */; };
 		EAF94E54227559A8003D7D6F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF94E53227559A8003D7D6F /* ViewController.m */; };
 		EAF94E57227559A8003D7D6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAF94E55227559A8003D7D6F /* Main.storyboard */; };
@@ -40,13 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		15737AD36276451DA9851BF6 /* libPods-BSHorizontalScrollViewTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BSHorizontalScrollViewTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D0C1ABF7209065B029798B3 /* Pods_BSHorizontalScrollViewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BSHorizontalScrollViewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A6758611208F4B100F43BCC /* Pods-BSHorizontalScrollViewUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSHorizontalScrollViewUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BSHorizontalScrollViewUITests/Pods-BSHorizontalScrollViewUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6BB151F2A94AF6A34866B0E3 /* Pods-BSHorizontalScrollViewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSHorizontalScrollViewTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BSHorizontalScrollViewTests/Pods-BSHorizontalScrollViewTests.release.xcconfig"; sourceTree = "<group>"; };
 		B6A9064B3CC12F228A933922 /* Pods-BSHorizontalScrollViewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSHorizontalScrollViewTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BSHorizontalScrollViewTests/Pods-BSHorizontalScrollViewTests.debug.xcconfig"; sourceTree = "<group>"; };
-		CCF81625141538F4E2EC15C9 /* libPods-BSHorizontalScrollView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BSHorizontalScrollView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEAC5BB0ED945C5389E63C68 /* Pods_BSHorizontalScrollViewUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BSHorizontalScrollViewUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23C5910037EA357A0C6ABE5 /* Pods-BSHorizontalScrollView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSHorizontalScrollView.release.xcconfig"; path = "Pods/Target Support Files/Pods-BSHorizontalScrollView/Pods-BSHorizontalScrollView.release.xcconfig"; sourceTree = "<group>"; };
-		D874797E54D8EA35E4F4361C /* libPods-BSHorizontalScrollViewUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BSHorizontalScrollViewUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB0EA7869C7544BB2ABD00C /* Pods-BSHorizontalScrollViewUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSHorizontalScrollViewUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BSHorizontalScrollViewUITests/Pods-BSHorizontalScrollViewUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EAF94E4C227559A8003D7D6F /* BSHorizontalScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BSHorizontalScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAF94E4F227559A8003D7D6F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -69,6 +68,7 @@
 		EAF94E8422755AAB003D7D6F /* BSHorizontalScrollView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BSHorizontalScrollView-Bridging-Header.h"; sourceTree = "<group>"; };
 		EAF94E8522755AAD003D7D6F /* SnakePageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnakePageControl.swift; sourceTree = "<group>"; };
 		EFA6DD5669CBE7ABB56F5503 /* Pods-BSHorizontalScrollView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSHorizontalScrollView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BSHorizontalScrollView/Pods-BSHorizontalScrollView.debug.xcconfig"; sourceTree = "<group>"; };
+		F5FCF8A62B2844C1F7C70CAA /* Pods_BSHorizontalScrollView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BSHorizontalScrollView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2864D2C723372ADD94234A9 /* libPods-BSHorizontalScrollView.a in Frameworks */,
+				AFF62B7B85B89A9BD31F549B /* Pods_BSHorizontalScrollView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CD1FC69D3615659D5C2D956 /* libPods-BSHorizontalScrollViewTests.a in Frameworks */,
+				4A0718965FB025F3A83CD07F /* Pods_BSHorizontalScrollViewTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B8D18670A65D238218EAD65 /* libPods-BSHorizontalScrollViewUITests.a in Frameworks */,
+				DB892C2D4CCDDB8107493D8E /* Pods_BSHorizontalScrollViewUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,9 +115,9 @@
 		63CE95BC99DA06B99BDA75BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CCF81625141538F4E2EC15C9 /* libPods-BSHorizontalScrollView.a */,
-				15737AD36276451DA9851BF6 /* libPods-BSHorizontalScrollViewTests.a */,
-				D874797E54D8EA35E4F4361C /* libPods-BSHorizontalScrollViewUITests.a */,
+				F5FCF8A62B2844C1F7C70CAA /* Pods_BSHorizontalScrollView.framework */,
+				3D0C1ABF7209065B029798B3 /* Pods_BSHorizontalScrollViewTests.framework */,
+				CEAC5BB0ED945C5389E63C68 /* Pods_BSHorizontalScrollViewUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -193,6 +193,7 @@
 				EAF94E48227559A8003D7D6F /* Sources */,
 				EAF94E49227559A8003D7D6F /* Frameworks */,
 				EAF94E4A227559A8003D7D6F /* Resources */,
+				375AB74A800EA6C2EFE305EC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -328,6 +329,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		375AB74A800EA6C2EFE305EC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BSHorizontalScrollView/Pods-BSHorizontalScrollView-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/PageControls/PageControls.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PageControls.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BSHorizontalScrollView/Pods-BSHorizontalScrollView-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		567594B878B330A1EBF25B3F /* [CP] Check Pods Manifest.lock */ = {
