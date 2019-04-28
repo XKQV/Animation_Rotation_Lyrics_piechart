@@ -12,6 +12,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SnakePageControl : UIView
 
+@property (assign, nonatomic) int pageCount;
+
+@property (assign, nonatomic) CGFloat progress;
+
+@property (assign, nonatomic) int currentPage;
+
+@property (readonly, nonatomic) UIColor *activeTint;
+
+@property (readonly, nonatomic) UIColor *inactiveTint;
+
+@property (assign, nonatomic) CGFloat indicatorPadding;
+
+@property (assign, nonatomic) CGFloat indicatorRadius;
+
+-(CGSize)intrinsicContentSize;
+
+-(CGSize)sizeThatFits:(CGSize)size;
+
 @end
 
 NS_ASSUME_NONNULL_END

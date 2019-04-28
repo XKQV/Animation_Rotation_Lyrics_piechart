@@ -61,7 +61,7 @@
     //setup page control and add timer if there are more than one images
     if (_imageCount > 1) {
         self.pageControl = [[SnakePageControl alloc]init];
-        self.pageControl.pageCount = _imageCount-2;
+        self.pageControl.pageCount = (int)_imageCount-2;
         CGSize pageControlSize = [self.pageControl sizeThatFits:self.scrollView.bounds.size];
         self.pageControl.frame = CGRectMake(_scrollView.frame.size.width-pageControlSize.width-20, self.scrollView.bounds.size.height-pageControlSize.height-20,pageControlSize.width, pageControlSize.height);
         self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
