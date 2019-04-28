@@ -10,6 +10,7 @@
 		4A0718965FB025F3A83CD07F /* Pods_BSHorizontalScrollViewTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0C1ABF7209065B029798B3 /* Pods_BSHorizontalScrollViewTests.framework */; };
 		AFF62B7B85B89A9BD31F549B /* Pods_BSHorizontalScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5FCF8A62B2844C1F7C70CAA /* Pods_BSHorizontalScrollView.framework */; };
 		DB892C2D4CCDDB8107493D8E /* Pods_BSHorizontalScrollViewUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEAC5BB0ED945C5389E63C68 /* Pods_BSHorizontalScrollViewUITests.framework */; };
+		EA4C18912275B1EE00162249 /* SnakePageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C18902275B1EE00162249 /* SnakePageControl.m */; };
 		EAF94E51227559A8003D7D6F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF94E50227559A8003D7D6F /* AppDelegate.m */; };
 		EAF94E54227559A8003D7D6F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF94E53227559A8003D7D6F /* ViewController.m */; };
 		EAF94E57227559A8003D7D6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAF94E55227559A8003D7D6F /* Main.storyboard */; };
@@ -47,6 +48,8 @@
 		CEAC5BB0ED945C5389E63C68 /* Pods_BSHorizontalScrollViewUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BSHorizontalScrollViewUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23C5910037EA357A0C6ABE5 /* Pods-BSHorizontalScrollView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSHorizontalScrollView.release.xcconfig"; path = "Pods/Target Support Files/Pods-BSHorizontalScrollView/Pods-BSHorizontalScrollView.release.xcconfig"; sourceTree = "<group>"; };
 		DCB0EA7869C7544BB2ABD00C /* Pods-BSHorizontalScrollViewUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSHorizontalScrollViewUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BSHorizontalScrollViewUITests/Pods-BSHorizontalScrollViewUITests.release.xcconfig"; sourceTree = "<group>"; };
+		EA4C188F2275B1EE00162249 /* SnakePageControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnakePageControl.h; sourceTree = "<group>"; };
+		EA4C18902275B1EE00162249 /* SnakePageControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnakePageControl.m; sourceTree = "<group>"; };
 		EAF94E4C227559A8003D7D6F /* BSHorizontalScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BSHorizontalScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAF94E4F227559A8003D7D6F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EAF94E50227559A8003D7D6F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -147,6 +150,8 @@
 		EAF94E4E227559A8003D7D6F /* BSHorizontalScrollView */ = {
 			isa = PBXGroup;
 			children = (
+				EA4C188F2275B1EE00162249 /* SnakePageControl.h */,
+				EA4C18902275B1EE00162249 /* SnakePageControl.m */,
 				EAF94E8522755AAD003D7D6F /* SnakePageControl.swift */,
 				EAF94E81227559B6003D7D6F /* BSHorizontalScrollView.h */,
 				EAF94E82227559B7003D7D6F /* BSHorizontalScrollView.m */,
@@ -395,6 +400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAF94E83227559B7003D7D6F /* BSHorizontalScrollView.m in Sources */,
+				EA4C18912275B1EE00162249 /* SnakePageControl.m in Sources */,
 				EAF94E54227559A8003D7D6F /* ViewController.m in Sources */,
 				EAF94E5F227559A9003D7D6F /* main.m in Sources */,
 				EAF94E51227559A8003D7D6F /* AppDelegate.m in Sources */,
