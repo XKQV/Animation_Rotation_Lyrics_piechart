@@ -55,6 +55,7 @@
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.contentSize = CGSizeMake(_imageArray.count*_scrollViewWidth, 0);
     _scrollView.bounces = NO;
+    _scrollView.tag = 1;
     [self.scrollViewWithPaging addSubview:_scrollView];
     
     //setup page control and add timer if there are more than one images
@@ -95,8 +96,8 @@
     };
     //scrollViewDidScroll
     self.svDidScroll = ^(UIScrollView * _Nonnull svDidScroll) {
-        CGFloat page = svDidScroll.contentOffset.x / svDidScroll.bounds.size.width;
-        CGFloat progressInPage = svDidScroll.contentOffset.x - (page * svDidScroll.bounds.size.width);
+        CGFloat page = svDidScroll.contentOffset.x / weakSelf.scrollViewWidth;
+        CGFloat progressInPage = svDidScroll.contentOffset.x - (page * weakSelf.scrollViewWidth);
         CGFloat progress = (CGFloat)page + progressInPage;
         weakSelf.pageControl.progress = progress-1;
     };

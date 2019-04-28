@@ -27,7 +27,9 @@
     //    self.myscrollView.delegate = self;
 //    _bsBannerView = [[BSHorizontalScrollView alloc]initWithViewRect:CGRectMake(0, 0, kScreenWidth, kScreenHeight/3) bannerImageNameArray: @[                                                                                                                                           @"https://www.gstatic.com/webp/gallery/4.sm.jpg", @"https://www.gstatic.com/webp/gallery3/2.sm.png",@"https://www.gstatic.com/webp/gallery/1.sm.jpg",@"https://www.gstatic.com/webp/gallery/5.sm.jpg",@"https://homepages.cae.wisc.edu/~ece533/images/pool.png"]];
 //        _bsBannerView = [[BSHorizontalScrollView alloc]initWithViewRect:CGRectMake(0, 0, kScreenWidth, kScreenHeight/3) bannerImageNameArray: @[                                                                                                                                            @"https://homepages.cae.wisc.edu/~ece533/images/mountain.png",@"https://www.gstatic.com/webp/gallery/1.sm.jpg",@"https://www.gstatic.com/webp/gallery/5.sm.jpg",@"https://homepages.cae.wisc.edu/~ece533/images/pool.png"]];
-            _bsBannerView = [[BSHorizontalScrollView alloc]initWithViewRect:CGRectMake(0, 0, kScreenWidth, kScreenHeight/3) bannerImageNameArray: @[                                                                                                                                            @"https://homepages.cae.wisc.edu/~ece533/images/mountain.png",@"https://www.gstatic.com/webp/gallery/5.sm.jpg",@"https://homepages.cae.wisc.edu/~ece533/images/pool.png"]];
+//            _bsBannerView = [[BSHorizontalScrollView alloc]initWithViewRect:CGRectMake(0, 0, kScreenWidth, kScreenHeight/3) bannerImageNameArray: @[                                                                                                                                            @"https://homepages.cae.wisc.edu/~ece533/images/mountain.png",@"https://www.gstatic.com/webp/gallery/5.sm.jpg",@"https://homepages.cae.wisc.edu/~ece533/images/pool.png"]];
+            _bsBannerView = [[BSHorizontalScrollView alloc]initWithViewRect:CGRectMake(0, 0, kScreenWidth, kScreenHeight/3) bannerImageNameArray: @[                                                                                                                                            @"https://homepages.cae.wisc.edu/~ece533/images/mountain.png",@"https://homepages.cae.wisc.edu/~ece533/images/pool.png"]];
+    
 //        _bsBannerView = [[BSHorizontalScrollView alloc]initWithViewRect:CGRectMake(0, 0, kScreenWidth, kScreenHeight/3) bannerImageNameArray: @[                                                                                                                                           @"https://www.gstatic.com/webp/gallery/4.sm.jpg"]];
     
     //  @[@"1.jpg",@"2.jpg",@"3.jpg"]];
@@ -42,7 +44,7 @@
  
  
  
- /**
+
  *  开启定时器
  */
 /**
@@ -52,14 +54,18 @@
  */
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
 //    NSLog(@"Scroll");
-    _bsBannerView.svDidScroll(scrollView);
+    if (scrollView.tag == 1) {
+        _bsBannerView.svDidScroll(scrollView);
+    }
+
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
 //    NSLog(@"EndDecelerating");
+        if (scrollView.tag == 1) {
     _bsBannerView.svDidEndDeceler(scrollView);
-    
+        }
 }
 /**
  *  定时器 以动画形式改变scrollview的contentOffset 调用
@@ -69,8 +75,9 @@
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
 //    NSLog(@"EndScrollingAnimation");
+        if (scrollView.tag == 1) {
     _bsBannerView.svDidEndScoAni(scrollView);
-    
+        }
 }
 /**
  *  开始拖拽
@@ -80,7 +87,9 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
 //    NSLog(@"WillBeginDragging");
+        if (scrollView.tag == 1) {
     [_bsBannerView  invalidateTimer];
+        }
 }
 /**
  *  结束拖拽
@@ -91,7 +100,9 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
 //        NSLog(@"EndDragging");
+        if (scrollView.tag == 1) {
     [_bsBannerView addTimer];
+        }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
