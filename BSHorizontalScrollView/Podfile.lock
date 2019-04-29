@@ -1,22 +1,22 @@
 PODS:
-  - PageControls/SnakePageControl (1.0.1)
+  - Masonry (1.1.0)
   - SDWebImage (5.0.1):
     - SDWebImage/Core (= 5.0.1)
   - SDWebImage/Core (5.0.1)
 
 DEPENDENCIES:
-  - PageControls/SnakePageControl
+  - Masonry
   - SDWebImage (~> 5.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - PageControls
+    - Masonry
     - SDWebImage
 
 SPEC CHECKSUMS:
-  PageControls: fc2436c93e79419521a6de5d46d84722593e2949
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   SDWebImage: 27dd2c9ea07a2252f94557c9fbb6105ee94b74c9
 
-PODFILE CHECKSUM: 460ad9e6cbfde2618e4d4a978b421a50ae6f337e
+PODFILE CHECKSUM: c4441e5db0e2cfcae63fbad34aff6de1dfbdda08
 
 COCOAPODS: 1.5.3

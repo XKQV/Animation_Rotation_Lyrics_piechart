@@ -7,7 +7,7 @@ target 'BSHorizontalScrollView' do
 
   # Pods for BSHorizontalScrollView
 pod 'SDWebImage', '~> 5.0'
-pod 'PageControls/SnakePageControl'
+pod 'Masonry'
   target 'BSHorizontalScrollViewTests' do
     inherit! :search_paths
     # Pods for testing

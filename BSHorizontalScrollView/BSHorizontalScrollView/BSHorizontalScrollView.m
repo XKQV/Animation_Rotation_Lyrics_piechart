@@ -8,6 +8,7 @@
 
 #import "BSHorizontalScrollView.h"
 #import "SDWebImage.h"
+#import "Masonry.h"
 
 @interface BSHorizontalScrollView()
 @property (assign, nonatomic) CGFloat scrollViewWidth;
@@ -56,15 +57,18 @@
     _scrollView.contentSize = CGSizeMake(_imageArray.count*_scrollViewWidth, 0);
     _scrollView.bounces = NO;
     _scrollView.tag = 1;
+    
+    //Add tap gesture
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didSelectItem)];
+    [_scrollView addGestureRecognizer: singleTap];
     [self.scrollViewWithPaging addSubview:_scrollView];
     
     //setup page control and add timer if there are more than one images
     if (_imageCount > 1) {
         self.pageControl = [[UIPageControl alloc]init];
         self.pageControl.numberOfPages = _imageCount - 2;
-        CGSize pageControlSize = [self.pageControl sizeThatFits:self.scrollView.bounds.size];
-        self.pageControl.frame = CGRectMake(_scrollView.frame.size.width-pageControlSize.width-20, self.scrollView.bounds.size.height-pageControlSize.height-20,pageControlSize.width, pageControlSize.height);
-        self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+        self.pageControl.pageIndicatorTintColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1.0];
+        self.pageControl.currentPageIndicatorTintColor  = [UIColor colorWithRed:0.11 green:0.66 blue:1.00 alpha:1.0];
         
         //add pagecontrol
         [self.scrollViewWithPaging addSubview:_pageControl];
@@ -75,9 +79,13 @@
     } else if (_imageCount == 1){
         _scrollView.contentOffset = CGPointMake(0, 0);
     }
+     __weak typeof(self) weakSelf = self;
+    [self.pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.scrollViewWithPaging);
+        make.bottom.equalTo(self.scrollViewWithPaging).offset(-5);
+    }];
     
-    __weak typeof(self) weakSelf = self;
-    
+
     //scrollViewDidEndDecelerating
     self.svDidEndDeceler = ^(UIScrollView * _Nonnull svDidEndDe) {
         
@@ -152,7 +160,11 @@
     CGPoint apoint = self.scrollView.contentOffset;
     
     [self.scrollView setContentOffset:CGPointMake(apoint.x+_scrollViewWidth, 0) animated:YES];
-    
 }
-
+-(void)didSelectItem{
+    if ([self.delegate respondsToSelector:@selector(selectedAtIndex:)]) {
+        int selectedIndex = (int)(_scrollView.contentOffset.x/_scrollView.frame.size.width);
+        [self.delegate selectedAtIndex:selectedIndex - 1];
+    }
+}
 @end

@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void (^scrollViewDidEndDeceleratingBlock)(UIScrollView *svDidEndDeceler);
 typedef void (^scrollViewDidEndScrollingAnimation)(UIScrollView *svDidEndScoAni);
 typedef void (^scrollViewDidScroll)(UIScrollView *svDidScroll);
+@protocol BSScrollViewDidSelectDelegate <NSObject>
+- (void)selectedAtIndex:(int)atIndex;
+@end
 
 @interface BSHorizontalScrollView : UIView
 @property (strong, nonatomic) UIView *scrollViewWithPaging;
@@ -21,7 +24,7 @@ typedef void (^scrollViewDidScroll)(UIScrollView *svDidScroll);
 @property (assign, nonatomic) CGRect viewRect;
 @property (nonatomic,strong) NSMutableArray *imageArray;
 @property (nullable,nonatomic,strong) NSTimer *timer;
-
+@property (weak, nonatomic) id<BSScrollViewDidSelectDelegate>delegate;
 
 @property (nonatomic, copy) scrollViewDidEndDeceleratingBlock svDidEndDeceler;
 @property (nonatomic, copy) scrollViewDidEndScrollingAnimation svDidEndScoAni;
