@@ -25,7 +25,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     //    self.myscrollView.delegate = self;
-    _bsBannerView = [[BSHorizontalScrollView alloc]initWithViewRect:CGRectMake(0, 0, kScreenWidth, kScreenHeight/3) bannerImageNameArray: @[                                                                                                                                           @"https://www.gstatic.com/webp/gallery/4.sm.jpg", @"https://www.gstatic.com/webp/gallery3/2.sm.png",@"https://www.gstatic.com/webp/gallery/1.sm.jpg",@"https://www.gstatic.com/webp/gallery/5.sm.jpg",@"https://homepages.cae.wisc.edu/~ece533/images/pool.png"]];
+    _bsBannerView = [[BSHorizontalScrollView alloc]initWithViewRect:CGRectMake(0, 0, kScreenWidth, kScreenHeight/3) bannerImageNameArray: @[                                                                                                                                           @"https://www.gstatic.com/webp/gallery/4.sm.jpg",@"https://www.gstatic.com/webp/gallery/1.sm.jpg",@"https://www.gstatic.com/webp/gallery/5.sm.jpg",@"https://homepages.cae.wisc.edu/~ece533/images/pool.png"]];
 //        _bsBannerView = [[BSHorizontalScrollView alloc]initWithViewRect:CGRectMake(0, 0, kScreenWidth, kScreenHeight/3) bannerImageNameArray: @[                                                                                                                                            @"https://homepages.cae.wisc.edu/~ece533/images/mountain.png",@"https://www.gstatic.com/webp/gallery/1.sm.jpg",@"https://www.gstatic.com/webp/gallery/5.sm.jpg",@"https://homepages.cae.wisc.edu/~ece533/images/pool.png"]];
 //            _bsBannerView = [[BSHorizontalScrollView alloc]initWithViewRect:CGRectMake(0, 0, kScreenWidth, kScreenHeight/3) bannerImageNameArray: @[                                                                                                                                            @"https://homepages.cae.wisc.edu/~ece533/images/mountain.png",@"https://www.gstatic.com/webp/gallery/5.sm.jpg",@"https://homepages.cae.wisc.edu/~ece533/images/pool.png"]];
 //            _bsBannerView = [[BSHorizontalScrollView alloc]initWithViewRect:CGRectMake(0, 0, kScreenWidth, kScreenHeight/3) bannerImageNameArray: @[                                                                                                                                            @"https://homepages.cae.wisc.edu/~ece533/images/mountain.png",@"https://homepages.cae.wisc.edu/~ece533/images/pool.png"]];
@@ -52,13 +52,7 @@
  *
  *  @param scrollView <#scrollView description#>
  */
--(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    NSLog(@"Scroll");
-    if (scrollView.tag == 1) {
-        _bsBannerView.svDidScroll(scrollView);
-    }
 
-}
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {

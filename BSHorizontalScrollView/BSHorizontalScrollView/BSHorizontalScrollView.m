@@ -60,8 +60,8 @@
     
     //setup page control and add timer if there are more than one images
     if (_imageCount > 1) {
-        self.pageControl = [[SnakePageControl alloc]init];
-        self.pageControl.pageCount = (int)_imageCount-2;
+        self.pageControl = [[UIPageControl alloc]init];
+        self.pageControl.numberOfPages = _imageCount - 2;
         CGSize pageControlSize = [self.pageControl sizeThatFits:self.scrollView.bounds.size];
         self.pageControl.frame = CGRectMake(_scrollView.frame.size.width-pageControlSize.width-20, self.scrollView.bounds.size.height-pageControlSize.height-20,pageControlSize.width, pageControlSize.height);
         self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
@@ -77,29 +77,40 @@
     }
     
     __weak typeof(self) weakSelf = self;
+    
     //scrollViewDidEndDecelerating
     self.svDidEndDeceler = ^(UIScrollView * _Nonnull svDidEndDe) {
-        if (svDidEndDe.contentOffset.x==0) {//滑动到最左边
-            [weakSelf.scrollView setContentOffset:CGPointMake(weakSelf.scrollViewWidth*(weakSelf.imageArray.count-2), 0)];
-        }else if (svDidEndDe.contentOffset.x==weakSelf.scrollView.contentSize.width-weakSelf.scrollViewWidth){//最右边
-            [weakSelf.scrollView setContentOffset:CGPointMake(weakSelf.scrollViewWidth, 0)];
-        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (svDidEndDe.contentOffset.x==0) {//滑动到最左边
+                [weakSelf.scrollView setContentOffset:CGPointMake(weakSelf.scrollViewWidth*(weakSelf.imageArray.count-2), 0)];
+            }else if (svDidEndDe.contentOffset.x==weakSelf.scrollView.contentSize.width-weakSelf.scrollViewWidth){//最右边
+                [weakSelf.scrollView setContentOffset:CGPointMake(weakSelf.scrollViewWidth, 0)];
+            }
+            NSInteger page = svDidEndDe.contentOffset.x / weakSelf.scrollViewWidth;
+            weakSelf.pageControl.currentPage = page -1;
+        });
+        
     };
     
     //scrollViewDidEndScrollingAnimation
     self.svDidEndScoAni = ^(UIScrollView * _Nonnull svDidEndScoAni) {
-        if (svDidEndScoAni.contentOffset.x==0) {
-            [weakSelf.scrollView setContentOffset:CGPointMake(weakSelf.scrollViewWidth*(weakSelf.imageArray.count-2), 0)];
-        }else if (svDidEndScoAni.contentOffset.x==weakSelf.scrollView.contentSize.width-weakSelf.scrollViewWidth){
-            [weakSelf.scrollView setContentOffset:CGPointMake(weakSelf.scrollViewWidth, 0)];
-        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (svDidEndScoAni.contentOffset.x==0) {
+                [weakSelf.scrollView setContentOffset:CGPointMake(weakSelf.scrollViewWidth*(weakSelf.imageArray.count-2), 0)];
+            }else if (svDidEndScoAni.contentOffset.x==weakSelf.scrollView.contentSize.width-weakSelf.scrollViewWidth){
+                [weakSelf.scrollView setContentOffset:CGPointMake(weakSelf.scrollViewWidth, 0)];
+            }
+            NSInteger page = svDidEndScoAni.contentOffset.x / weakSelf.scrollViewWidth;
+            weakSelf.pageControl.currentPage = page - 1;
+        });
+        
     };
     //scrollViewDidScroll
     self.svDidScroll = ^(UIScrollView * _Nonnull svDidScroll) {
-        CGFloat page = svDidScroll.contentOffset.x / weakSelf.scrollViewWidth;
-        CGFloat progressInPage = svDidScroll.contentOffset.x - (page * weakSelf.scrollViewWidth);
-        CGFloat progress = (CGFloat)page + progressInPage;
-        weakSelf.pageControl.progress = progress-1;
+        
+        
     };
     
     

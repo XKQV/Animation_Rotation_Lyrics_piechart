@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "BSHorizontalScrollView-Swift.h"
-#import "SnakePageControl.h"
 
 NS_ASSUME_NONNULL_BEGIN
 typedef void (^scrollViewDidEndDeceleratingBlock)(UIScrollView *svDidEndDeceler);
@@ -17,7 +15,7 @@ typedef void (^scrollViewDidScroll)(UIScrollView *svDidScroll);
 
 @interface BSHorizontalScrollView : UIView
 @property (strong, nonatomic) UIView *scrollViewWithPaging;
-@property (strong, nonatomic) SnakePageControl *pageControl;
+@property (strong, nonatomic) UIPageControl *pageControl;
 @property (strong, nonatomic) UIScrollView *scrollView;
 
 @property (assign, nonatomic) CGRect viewRect;
