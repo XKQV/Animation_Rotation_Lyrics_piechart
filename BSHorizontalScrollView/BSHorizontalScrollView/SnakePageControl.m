@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSMutableArray *inactiveLayers;
 @property (nonatomic, strong) CALayer *activeLayer;
+@property (nonatomic, assign) int internalPageCount;
 
 @end
 
@@ -20,17 +21,17 @@
 
 
 - (void)setPageCount:(int)pageCount {
-   
+//    self.internalPageCount = pageCount;
     [self setupParameters];
     [self updateNumberOfPages:pageCount];
+    
 
 }
 
 - (void)setupParameters {
     _inactiveLayers = [NSMutableArray new];
-    _activeLayer = [CALayer new];
+    _activeLayer = [self activeLayer];
 
-    
 }
 
 - (void)setProgress:(CGFloat)progress {
@@ -79,6 +80,7 @@
 
 - (void)updateNumberOfPages:(int)count {
     // no need to update
+//    self.pageCount = count;
     if (count == _inactiveLayers.count ) {
         return;
     }
@@ -89,28 +91,28 @@
     for (int i = 0; i < count; i++) {
         CALayer *layer = [CALayer new];
         layer.backgroundColor = [self inactiveTint].CGColor;
-//        [self.layer addSublayer:layer];
+        [self.layer addSublayer:layer];
         [_inactiveLayers addObject:layer];
         
     }
     [self layoutInactivePageIndicators:_inactiveLayers];
-    [self.layer addSublayer:[self activeLayer]];
+    [self.layer addSublayer:_activeLayer];
     [self layoutActivePageIndicator:_progress];
     [self invalidateIntrinsicContentSize];
 
 }
 - (void)layoutActivePageIndicator:(CGFloat)progress {
     // ignore if progress is outside of page indicators' bounds
-    if (progress <= 0 && progress >= _pageCount -1 ) {
+    if (progress <= 0 && progress >= _internalPageCount -1 ) {
         return;
     }
     CGFloat denormalizedProgress = progress * ([self indicatorDiameter] + [self indicatorPadding]);
     
     CGFloat distanceFromPage = fabs(round(progress) - progress);
     
-    CGFloat width = [self indicatorDiameter] + [self indicatorPadding] * (distanceFromPage *2);
+    CGFloat width = [self indicatorDiameter] + [self indicatorPadding] * (distanceFromPage * 2);
     
-    CGRect newFrame = CGRectMake(0, [self activeLayer].frame.origin.y, width, [self indicatorDiameter]);
+    CGRect newFrame = CGRectMake(0, _activeLayer.frame.origin.y, width, [self indicatorDiameter]);
     
     newFrame.origin.x = denormalizedProgress;
     
