@@ -22,7 +22,7 @@
 - (instancetype)initWithViewRect:(CGRect)viewRect bannerImageNameArray:(NSArray *)imageNameArray{
     self = [super init];
     if (self) {
-        if (imageNameArray.count == 0) {
+        if (imageNameArray.count == 0 || imageNameArray.count > 5) {
             return self;
         }
         self.imageArray = imageNameArray.mutableCopy;
@@ -46,7 +46,12 @@
         
         UIView *views = [[UIView alloc] initWithFrame:CGRectMake((_scrollViewWidth*i), 0,_scrollViewWidth, _scrollViewHeight)];
         UIImageView *tempImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, _scrollViewWidth, _scrollViewHeight)];
-        [tempImageView sd_setImageWithURL:[NSURL URLWithString: _imageArray[i]]];
+        
+        if ([self isValidURL:_imageArray[i]]) {
+            [tempImageView sd_setImageWithURL:[NSURL URLWithString: _imageArray[i]]];
+        }else{
+            tempImageView.image = [UIImage imageNamed:_imageArray[i]];
+        }
         tempImageView.contentMode = UIViewContentModeScaleAspectFill;
         tempImageView.clipsToBounds = YES;
         [views addSubview:tempImageView];
@@ -54,7 +59,7 @@
     }
     _scrollView.pagingEnabled = YES;
     _scrollView.showsHorizontalScrollIndicator = NO;
-    _scrollView.contentSize = CGSizeMake(_imageArray.count*_scrollViewWidth, 0);
+    _scrollView.contentSize = CGSizeMake(_imageArray.count * _scrollViewWidth, 0);
     _scrollView.bounces = NO;
     _scrollView.tag = 1;
     
@@ -79,20 +84,19 @@
     } else if (_imageCount == 1){
         _scrollView.contentOffset = CGPointMake(0, 0);
     }
-     __weak typeof(self) weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     [self.pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.scrollViewWithPaging);
         make.bottom.equalTo(self.scrollViewWithPaging).offset(-5);
     }];
     
-
     //scrollViewDidEndDecelerating
     self.svDidEndDeceler = ^(UIScrollView * _Nonnull svDidEndDe) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (svDidEndDe.contentOffset.x==0) {//滑动到最左边
+            if (svDidEndDe.contentOffset.x == 0) {//滑动到最左边
                 [weakSelf.scrollView setContentOffset:CGPointMake(weakSelf.scrollViewWidth*(weakSelf.imageArray.count-2), 0)];
-            }else if (svDidEndDe.contentOffset.x==weakSelf.scrollView.contentSize.width-weakSelf.scrollViewWidth){//最右边
+            }else if (svDidEndDe.contentOffset.x == weakSelf.scrollView.contentSize.width-weakSelf.scrollViewWidth){//最右边
                 [weakSelf.scrollView setContentOffset:CGPointMake(weakSelf.scrollViewWidth, 0)];
             }
             NSInteger page = svDidEndDe.contentOffset.x / weakSelf.scrollViewWidth;
@@ -105,9 +109,9 @@
     self.svDidEndScoAni = ^(UIScrollView * _Nonnull svDidEndScoAni) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (svDidEndScoAni.contentOffset.x==0) {
+            if (svDidEndScoAni.contentOffset.x == 0) {
                 [weakSelf.scrollView setContentOffset:CGPointMake(weakSelf.scrollViewWidth*(weakSelf.imageArray.count-2), 0)];
-            }else if (svDidEndScoAni.contentOffset.x==weakSelf.scrollView.contentSize.width-weakSelf.scrollViewWidth){
+            }else if (svDidEndScoAni.contentOffset.x == weakSelf.scrollView.contentSize.width-weakSelf.scrollViewWidth){
                 [weakSelf.scrollView setContentOffset:CGPointMake(weakSelf.scrollViewWidth, 0)];
             }
             NSInteger page = svDidEndScoAni.contentOffset.x / weakSelf.scrollViewWidth;
@@ -124,6 +128,14 @@
     
 }
 
+-(BOOL)isValidURL:(NSString *)urlString{
+    NSURL *url = [NSURL URLWithString:urlString];
+    if (url && url.scheme && url.host)
+    {
+        return true;
+    }
+    return false;
+}
 
 -(void)processImageNameArray{
     if (_imageArray.count == 0) {
@@ -140,6 +152,7 @@
         return;
     }
 }
+
 - (void)addTimer
 {
     if (self.timer) {
@@ -155,16 +168,23 @@
     
     self.timer = nil;
 }
+
 - (void)flipToTheNextImage
 {
     CGPoint apoint = self.scrollView.contentOffset;
     
     [self.scrollView setContentOffset:CGPointMake(apoint.x+_scrollViewWidth, 0) animated:YES];
 }
+
 -(void)didSelectItem{
     if ([self.delegate respondsToSelector:@selector(selectedAtIndex:)]) {
         int selectedIndex = (int)(_scrollView.contentOffset.x/_scrollView.frame.size.width);
-        [self.delegate selectedAtIndex:selectedIndex - 1];
+        if (selectedIndex >= 1) {
+            [self.delegate selectedAtIndex:selectedIndex - 1];
+        } else {
+            [self.delegate selectedAtIndex:0];
+        }
+        
     }
 }
 @end

@@ -24,11 +24,10 @@ typedef void (^scrollViewDidScroll)(UIScrollView *svDidScroll);
 @property (assign, nonatomic) CGRect viewRect;
 @property (nonatomic,strong) NSMutableArray *imageArray;
 @property (nullable,nonatomic,strong) NSTimer *timer;
-@property (weak, nonatomic) id<BSScrollViewDidSelectDelegate>delegate;
-
 @property (nonatomic, copy) scrollViewDidEndDeceleratingBlock svDidEndDeceler;
 @property (nonatomic, copy) scrollViewDidEndScrollingAnimation svDidEndScoAni;
 @property (nonatomic, copy) scrollViewDidScroll svDidScroll;
+@property (weak, nonatomic) id<BSScrollViewDidSelectDelegate>delegate;
 
 - (instancetype)initWithViewRect:(CGRect)viewRect bannerImageNameArray:(NSArray *)imageNameArray;
 - (void)addTimer;
