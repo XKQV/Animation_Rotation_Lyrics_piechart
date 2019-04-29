@@ -7,6 +7,7 @@
 //
 
 #import "BSHorizontalScrollView.h"
+#import "BSHorizontalScrollView-Swift.h"
 #import "SDWebImage.h"
 #import "Masonry.h"
 
